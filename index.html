@@ -1105,10 +1105,11 @@
     }
 
     openChat.addEventListener("click", () => {
-      $("#chatbox").stop(true,true).fadeIn(180);
-      $("#chatFab").stop(true,true).fadeOut(120);
-      scheduleAutoHide();
-    });
+  if (window.FB) {
+    FB.CustomerChat.show(true);
+  }
+   });
+
     hideChat.addEventListener("click", () => {
       $("#chatbox").stop(true,true).fadeOut(140);
       $("#chatFab").stop(true,true).fadeIn(180);
@@ -1165,6 +1166,33 @@
       if (e.key === "Escape" && lightbox.style.display === "flex") closeLightbox();
     });
   </script>
+<!-- Messenger Chat Plugin -->
+<div id="fb-root"></div>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml: true,
+      version: 'v19.0'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-customerchat"
+  attribution="install_email"
+  page_id="61568508901711"
+  theme_color="#d6b25e"
+  logged_in_greeting="Hi Batchmate 👋 How can we help you?"
+  logged_out_greeting="Hi! Please log in to Messenger to chat."
+></div>
 
 </body>
 </html>
