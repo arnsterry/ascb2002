@@ -698,6 +698,20 @@
       .dockVol{ display:none; }
       .musicDock{ border-radius: 16px; }
     }
+    function openMessengerChat() {
+  // Try to open the Facebook Customer Chat plugin if it's loaded
+  try {
+    if (window.FB && FB.CustomerChat && typeof FB.CustomerChat.show === "function") {
+      FB.CustomerChat.show(true);
+      FB.CustomerChat.open(); // some versions support this
+      return;
+    }
+  } catch (e) {}
+
+  // Fallback: open direct messenger link (always works)
+  window.open("https://m.me/61568508901711", "_blank");
+}
+
   </style>
 </head>
 
