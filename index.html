@@ -1,164 +1,1261 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ASCB Batch 2002 Alumni</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ASCB Batch 2002 Alumni</title>
 
-  <!-- Aesthetic fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-    crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#e5e7eb;font-size:14px;
+  background:
+    radial-gradient(circle at top left, rgba(56,189,248,.12), transparent 55%),
+    radial-gradient(circle at top right, rgba(129,140,248,.16), transparent 55%),
+    linear-gradient(to bottom,#020617 0%,#020617 40%,#020617 100%);
+  min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.page{max-width:1120px;margin:0 auto;padding:24px 16px 56px}
+.shell{
+  background: radial-gradient(circle at top left, rgba(15,23,42,1), rgba(15,23,42,.96));
+  border-radius:24px;border:1px solid rgba(30,64,175,.85);
+  box-shadow:0 32px 80px rgba(15,23,42,.9),0 0 0 1px rgba(15,23,42,.9);
+  overflow:hidden;color:#e5e7eb;
+}
+.shell-inner{display:grid;grid-template-columns:3fr 2fr;gap:0}
 
-  <style>
-    :root{
-      /* ✅ NAVY / REAL BLUE THEME */
-      --bg1:#071a3a;
-      --bg2:#04122b;
-      --text:#eef2ff;
-      --muted:rgba(238,242,255,.72);
-      --gold:#d6b25e;
+/* HEADER */
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;border-bottom:1px solid rgba(30,64,175,.9);
+  background: radial-gradient(circle at top left, rgba(15,23,42,1), rgba(15,23,42,.96));
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{
+  width:44px;height:44px;border-radius:999px;background:rgba(15,23,42,.9);
+  padding:3px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 16px 32px rgba(15,23,42,.8);
+  flex:0 0 auto;
+}
+.brand-logo{width:100%;height:100%;border-radius:999px;object-fit:contain}
+.brand-text{display:flex;flex-direction:column;gap:2px;line-height:1.15}
+.brand-title{font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.brand-subtitle{font-size:10px;color:#e5e7eb;opacity:.8;letter-spacing:.22em;text-transform:uppercase}
 
-      --glass: rgba(8,14,28,.50);
-      --glass2: rgba(8,14,28,.72);
+.nav{display:flex;align-items:center;gap:14px;font-size:11px;text-transform:uppercase;letter-spacing:.16em;flex-wrap:wrap;justify-content:flex-end}
+.nav-link{
+  padding:6px 12px;border-radius:999px;color:#cbd5f5;cursor:pointer;
+  border:1px solid transparent;background:rgba(15,23,42,.3);
+  transition:background 140ms ease,color 140ms ease,transform 90ms ease,border-color 140ms ease;
+}
+.nav-link:hover{background:rgba(15,23,42,.7);transform:translateY(-1px)}
+.nav-link.active{background:linear-gradient(135deg,#4f46e5,#22c55e);color:#facc15;border-color:rgba(250,204,21,.7)}
+.nav-pill{padding:4px 11px;border-radius:999px;background:rgba(15,23,42,.9);color:#facc15;border:1px solid rgba(250,204,21,.5);font-size:11px}
 
-      --shadow: 0 22px 60px rgba(0,0,0,.42);
-      --shadow2: 0 18px 55px rgba(0,0,0,.30);
-    }
+/* HERO */
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:4px 10px;border-radius:999px;background:rgba(15,23,42,.9);
+  color:#a5f3fc;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  margin:18px 28px 0;
+}
+.dot{width:7px;height:7px;border-radius:999px;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.55)}
+.hero{
+  margin:18px 28px 0;position:relative;border-radius:20px;
+  padding:72px 32px 96px;
+  background:
+    linear-gradient(135deg, rgba(15,23,42,.35), rgba(15,23,42,.55)),
+    url("header.jpg") center/cover no-repeat;
+  border:1px solid rgba(251,191,36,.45);
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-frame{
+  max-width:560px;width:100%;padding:32px 40px 34px;border-radius:16px;
+  border:1px solid rgba(250,204,21,.6);
+  background:rgba(15,23,42,.35);
+  backdrop-filter: blur(8px) saturate(120%);
+  text-align:center;color:#e5e7eb;
+  box-shadow:0 16px 40px rgba(15,23,42,.6);
+}
+.hero-frame-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:#bfdbfe;margin-bottom:10px}
+.hero-frame-title{font-size:clamp(24px,3vw,28px);line-height:1.1;font-weight:700}
+.hero-frame-subtitle{margin-top:8px;font-size:13px;text-transform:uppercase;letter-spacing:.18em;color:#facc15}
+.hero-frame-tagline{margin-top:14px;font-size:12px;color:#e5e7eb;font-style:italic}
+.hero-frame-meta{margin-top:16px;font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:#9ca3af}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Manrope, system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      overflow-x:hidden;
+/* CAROUSEL (NO WHITE) */
+.alumni-strip{
+  margin-top:18px;padding:18px 24px;
+  background:rgba(15,23,42,.96);
+  border-top:1px solid rgba(30,64,175,.7);
+  box-shadow:0 22px 52px rgba(15,23,42,.9);
+}
+.alumni-strip-header{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.alumni-strip-title{font-size:13px;text-transform:uppercase;letter-spacing:.16em}
+.alumni-strip-sub{font-size:11px;color:#9ca3af}
+.carousel{
+  position:relative;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  gap:10px;
+  align-items:center;
+}
+.carousel-btn{
+  width:34px;height:34px;border-radius:999px;
+  border:1px solid rgba(59,130,246,.7);
+  background:rgba(15,23,42,.92);
+  color:#e5e7eb;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 24px rgba(2,6,23,.55);
+}
+.carousel-viewport{overflow:hidden}
+.carousel-track{
+  display:flex;gap:12px;overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding-bottom:4px;
+}
+.carousel-track::-webkit-scrollbar{height:6px}
+.carousel-track::-webkit-scrollbar-thumb{background:rgba(148,163,184,.35);border-radius:999px}
+.carousel-item{
+  scroll-snap-align:start;
+  min-width:180px;max-width:220px;border-radius:14px;
+  background:rgba(2,6,23,.55);
+  border:1px solid rgba(59,130,246,.35);
+  box-shadow:0 14px 32px rgba(2,6,23,.55);
+  overflow:hidden;cursor:pointer;
+  display:flex;flex-direction:column;
+  transition:transform 140ms ease,border-color 140ms ease;
+}
+.carousel-item:hover{transform:translateY(-2px);border-color:rgba(250,204,21,.45)}
+.carousel-thumb{
+  height:110px;
+  background: radial-gradient(circle at top left, #0ea5e9, #1d4ed8);
+  background-size:cover;background-position:center;
+  display:flex;align-items:center;justify-content:center;
+  color:#e5e7eb;font-weight:800;font-size:12px;
+}
+.carousel-body{padding:10px 10px 11px;display:flex;flex-direction:column;gap:3px}
+.carousel-title{font-size:12px;font-weight:800}
+.carousel-meta{font-size:11px;color:#cbd5f5;opacity:.85}
 
-      background:
-        radial-gradient(1200px 700px at 60% 20%, rgba(214,178,94,.10), transparent 60%),
-        radial-gradient(900px 600px at 20% 60%, rgba(90,135,255,.10), transparent 55%),
-        linear-gradient(180deg,var(--bg1),var(--bg2));
+/* LIGHTBOX */
+.lightbox{
+  position:fixed; inset:0; z-index:99999;
+  background:rgba(2,6,23,.88);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity 160ms ease;
+  padding:16px;
+}
+.lightbox.open{opacity:1; pointer-events:auto}
+.lightbox-inner{
+  width:min(920px, 100%);
+  max-height:calc(100vh - 32px);
+  border-radius:18px;
+  background:rgba(15,23,42,.96);
+  border:1px solid rgba(59,130,246,.45);
+  box-shadow:0 36px 90px rgba(2,6,23,.9);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.lightbox-media{
+  background:rgba(2,6,23,.6);
+  display:flex; align-items:center; justify-content:center;
+  padding:10px; min-height:220px;
+}
+.lightbox-media img{
+  width:100%; height:auto; max-height:70vh;
+  object-fit:contain;
+  border-radius:12px;
+  border:1px solid rgba(148,163,184,.25);
+}
+.lightbox-bar{
+  padding:12px 14px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  border-top:1px solid rgba(59,130,246,.25);
+}
+.lightbox-title{font-size:14px;font-weight:900}
+.lightbox-caption{margin-top:2px;font-size:12px;color:#cbd5f5;opacity:.9}
+.lightbox-close{
+  width:34px;height:34px;border-radius:999px;
+  border:1px solid rgba(59,130,246,.6);
+  background:rgba(2,6,23,.55);
+  color:#e5e7eb;cursor:pointer;
+}
+.lightbox-nav{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.lightbox-nav button{
+  border-radius:999px;border:1px solid rgba(59,130,246,.6);
+  background:rgba(2,6,23,.55);
+  color:#e5e7eb;padding:6px 10px;cursor:pointer;font-size:12px;
+}
 
-      padding-bottom: 120px; /* space for bottom bar */
-    }
+/* MAIN / SIDE */
+.main{padding:24px 28px 26px;border-right:1px solid rgba(15,23,42,.75)}
+.sections{margin-top:24px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1.2fr);gap:16px}
+.panel{
+  border-radius:16px;background:rgba(15,23,42,.94);
+  border:1px solid rgba(30,64,175,.75);
+  padding:14px 14px 10px;
+  display:flex;flex-direction:column;gap:8px
+}
+.panel-header{display:flex;align-items:center;justify-content:space-between;font-size:12px}
+.panel-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:#9ca3af}
+.panel-title{font-size:13px;font-weight:600}
+.panel-sub{font-size:10px;color:#9ca3af}
+.badge{font-size:11px;padding:3px 8px;border-radius:999px;background:rgba(15,23,42,.96);color:#a5b4fc;border:1px solid rgba(129,140,248,.6)}
+.timeline-list{margin-top:6px;display:flex;flex-direction:column;gap:6px;font-size:12px}
+.timeline-item{display:grid;grid-template-columns:80px minmax(0,1fr);gap:10px;align-items:flex-start}
+.timeline-date{font-size:10px;color:#a5b4fc}
+.timeline-main{border-radius:10px;padding:6px 8px;background:rgba(15,23,42,.96);border:1px solid rgba(30,64,175,.6)}
+.timeline-name{font-weight:500}
+.timeline-meta{font-size:11px;color:#9ca3af;margin-top:2px}
+.timeline-tag{margin-top:4px;font-size:10px;color:#bbf7d0}
+.grid-stats{margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;font-size:11px}
+.stat-card{border-radius:10px;padding:7px 8px;background:rgba(15,23,42,.96);border:1px solid rgba(30,64,175,.65)}
+.stat-label{color:#9ca3af;margin-bottom:2px}
+.stat-value{font-size:14px;font-weight:600}
+.stat-pill{margin-top:2px;font-size:10px;color:#a5b4fc}
 
-    .container{ width:min(1200px,92vw); margin-inline:auto; }
-    main{ padding-top:72px; }
+.side{
+  padding:24px 20px 20px;
+  background: radial-gradient(circle at top left, rgba(15,23,42,.98), rgba(15,23,42,1));
+  display:flex;flex-direction:column;gap:16px;
+}
 
-    /* TOPBAR */
-    .topbar{
-      position:fixed; top:0; left:0; right:0;
-      z-index:100;
-      background: rgba(6,10,20,.55);
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .topbar-inner{
-      height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-    }
+/* HUB = SINGLE COLUMN (DIRECTORY BELOW RSVP) */
+.hub{margin-top:16px}
+.hub-stack{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:1fr;  /* <-- makes directory go BELOW rsvp */
+  gap:16px;
+  align-items:start;
+}
+.hub-stack > .panel{height:auto;align-self:start;min-height:0}
 
-    .brandWrap{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      user-select:none;
-      min-width: 260px;
-    }
-    .brandLogoImg{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      object-fit:cover;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
-      flex: 0 0 auto;
-    }
+/* RIGHT COLUMN STACK */
+.right-stack{display:flex;flex-direction:column;gap:16px}
 
-    .brandText .brandTitle{
-      font-weight:800;
-      letter-spacing:.06em;
-      font-size:13px;
-      line-height: 1.1;
-    }
-    .brandText .brandSub{
-      font-size:11px;
-      letter-spacing:.22em;
-      color: rgba(214,178,94,.95);
-      margin-top:3px;
-      text-transform:uppercase;
-      line-height: 1.2;
-    }
+/* CLOCK */
+.clock-card{border-radius:14px;padding:10px 12px 9px;background: radial-gradient(circle at top right, rgba(56,189,248,.16), rgba(15,23,42,.98));border:1px solid rgba(59,130,246,.85);display:flex;flex-direction:column;gap:4px}
+.clock-time{font-size:20px;font-weight:600}
+.clock-meta{font-size:11px;color:#9ca3af}
 
-    .nav{
-      display:flex;
-      align-items:center;
-      gap:18px;
-    }
-    .nav a{
-      text-decoration:none;
-      color: rgba(238,242,255,.86);
-      font-size:13px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      position:relative;
-      padding: 6px 0;
-    }
-    .nav a::after{
-      content:"";
-      position:absolute;
-      left:0; bottom:-7px;
-      width:0%;
-      height:2px;
-      background: var(--gold);
-      transition: width 180ms ease;
-      opacity:.85;
-    }
-    .nav a:hover{ color: var(--gold); }
-    .nav a:hover::after{ width:100%; }
+/* RADIO + NOW PLAYING */
+.radio-card{
+  border-radius:16px;padding:12px 12px 10px;
+  background: radial-gradient(circle at top right, rgba(56,189,248,.18), rgba(15,23,42,.98));
+  border:1px solid rgba(59,130,246,.9);
+  display:flex;flex-direction:column;gap:10px;
+}
+.radio-header{display:flex;align-items:center;justify-content:space-between;font-size:12px}
+.radio-title{font-weight:700}
+.radio-badge{font-size:10px;padding:3px 8px;border-radius:999px;background:rgba(15,23,42,.96);color:#bfdbfe;border:1px solid rgba(59,130,246,.85)}
+.radio-body{font-size:11px;color:#cbd5f5;line-height:1.35}
+.radio-controls{display:flex;align-items:center;gap:10px}
+.radio-play{
+  border:none;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;
+  background: linear-gradient(135deg,#f97316,#facc15);color:#111827;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.radio-mini{
+  border-radius:999px;border:1px solid rgba(148,163,184,.55);
+  background:rgba(15,23,42,.92);
+  color:#e5e7eb;padding:6px 10px;font-size:12px;cursor:pointer;
+}
+.radio-volume-row{flex:1;display:flex;align-items:center;gap:6px}
+.radio-volume-row span{font-size:11px;color:#cbd5f5}
+.radio-volume{flex:1;-webkit-appearance:none;height:4px;border-radius:999px;background:rgba(148,163,184,.6);outline:none}
+.radio-volume::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:12px;height:12px;border-radius:50%;background:#facc15;box-shadow:0 0 0 3px rgba(15,23,42,.9)}
+.radio-volume::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:#facc15;border:none;box-shadow:0 0 0 3px rgba(15,23,42,.9)}
+.radio-status{font-size:11px;color:#9ca3af}
 
-    .navRight{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content: flex-end;
-      min-width: 260px;
+.nowplaying{
+  border-radius:12px;padding:10px 10px;
+  background:rgba(2,6,23,.45);
+  border:1px solid rgba(59,130,246,.35);
+  display:grid;
+  grid-template-columns:52px 1fr;
+  gap:10px;
+  align-items:center;
+}
+.np-art{
+  width:52px;height:52px;border-radius:10px;
+  background: radial-gradient(circle at top left, #0ea5e9, #1d4ed8);
+  background-size:cover;background-position:center;
+  border:1px solid rgba(148,163,184,.25);
+}
+.np-title{font-size:12px;font-weight:800;line-height:1.2}
+.np-meta{font-size:11px;color:#cbd5f5;opacity:.9;margin-top:2px;line-height:1.2}
+.np-small{font-size:10px;color:#9ca3af;margin-top:4px}
+
+/* INPUTS */
+.chat-input{
+  border-radius:999px;
+  border:1px solid rgba(148,163,184,.7);
+  background: rgba(15,23,42,.96);
+  padding:6px 10px;
+  font-size:12px;
+  color:#e5e7eb;
+}
+.chat-input::placeholder{color:#6b7280}
+.chat-send{
+  border-radius:999px;border:none;padding:6px 10px;font-size:12px;
+  cursor:pointer;background:linear-gradient(135deg,#22c55e,#4ade80);
+  color:#052e16;font-weight:900;
+}
+
+/* GUESTBOOK */
+.chat-card{
+  border-radius:14px;padding:10px 10px 8px;
+  background: radial-gradient(circle at top left, rgba(30,64,175,.72), rgba(15,23,42,.98));
+  border: 1px solid rgba(59,130,246,.7);
+  display:flex;flex-direction:column;gap:6px;
+}
+.chat-log{
+  max-height:220px;overflow-y:auto;padding:6px 4px 4px;
+  display:flex;flex-direction:column;gap:4px;font-size:12px;
+}
+.chat-message{
+  border-radius:8px;padding:6px 7px;
+  background: rgba(30,64,175,.28);
+  border:1px solid rgba(148,163,184,.14);
+}
+.chat-message-header{
+  display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2px;gap:10px;
+}
+.chat-message-name{font-weight:700}
+.chat-message-time{font-size:10px;color:#9ca3af;white-space:nowrap}
+.chat-message-text{font-size:12px;line-height:1.25}
+.chat-system-line{font-size:11px;color:#cbd5f5;opacity:.85;line-height:1.25}
+.chat-form{display:grid;grid-template-columns:0.9fr 1.6fr auto;gap:6px}
+
+/* Footer */
+.footer{
+  padding:12px 20px 16px;border-top:1px solid rgba(15,23,42,.8);
+  font-size:11px;color:#9ca3af;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:rgba(15,23,42,.98);
+}
+.footer-links{display:flex;gap:10px}
+.footer-link{color:#cbd5f5}
+.footer-link:hover{text-decoration:underline}
+
+/* RESPONSIVE */
+@media (max-width:960px){
+  .shell-inner{grid-template-columns:1fr}
+  .main{border-right:none;border-bottom:1px solid rgba(15,23,42,.78)}
+}
+@media (max-width:720px){
+  .header{flex-direction:column;align-items:flex-start;gap:10px}
+  .nav{width:100%;justify-content:space-between;row-gap:6px}
+  .sections{grid-template-columns:1fr}
+  .main{padding-inline:18px}
+  .side{padding-inline:18px}
+  .hero{margin-inline:18px}
+  .hero-eyebrow{margin-inline:18px}
+  .alumni-strip{padding-inline:18px}
+  .carousel-btn{width:32px;height:32px}
+  .carousel-item{min-width:160px}
+  .lightbox-media img{max-height:60vh}
+  .chat-form{grid-template-columns:1fr;gap:8px}
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+  <div class="shell">
+
+    <header class="header">
+      <div class="brand">
+        <div class="brand-mark">
+          <img src="logo.png" alt="ASCB official logo" class="brand-logo">
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">ASCB Batch 2002</div>
+          <div class="brand-subtitle">Andres Soriano Colleges of Bislig</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-link active" data-target="section-about">About</button>
+        <button class="nav-link" data-target="section-events">Events</button>
+        <button class="nav-link" data-target="section-groups">Sections</button>
+        <button class="nav-link" data-target="section-hub">Hub</button>
+        <button class="nav-link" data-target="section-contact">Contact</button>
+        <div class="nav-pill">Homecoming ready</div>
+      </nav>
+    </header>
+
+    <span class="hero-eyebrow">
+      <span class="dot"></span>
+      <span>Official alumni portal</span>
+    </span>
+
+    <section class="hero" id="section-about">
+      <div class="hero-frame">
+        <div class="hero-frame-eyebrow">Official Batch Webpage</div>
+        <h1 class="hero-frame-title">Andres Soriano Colleges of Bislig</h1>
+        <div class="hero-frame-subtitle">High school batch 2002</div>
+        <p class="hero-frame-tagline">"Soriano Colleges, Alma mater Dear!"</p>
+        <div class="hero-frame-meta"><span>Reconnect · Remember · Celebrate</span></div>
+      </div>
+    </section>
+
+    <section class="alumni-strip" aria-label="Photo carousel">
+      <div class="alumni-strip-header">
+        <div class="alumni-strip-title">Batch Gallery</div>
+        <div class="alumni-strip-sub">Click a card to open lightbox.</div>
+      </div>
+
+      <div class="carousel" id="batch-carousel">
+        <button class="carousel-btn" type="button" id="carousel-prev" aria-label="Previous">‹</button>
+
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carousel-track">
+            <article class="carousel-item" data-title="Reunion night" data-caption="Batch gathering" data-src="gallery/reunion.jpg">
+              <div class="carousel-thumb" style="background-image:url('gallery/reunion.jpg')">Reunion</div>
+              <div class="carousel-body">
+                <div class="carousel-title">Reunion night</div>
+                <div class="carousel-meta">Batch gathering</div>
+              </div>
+            </article>
+
+            <article class="carousel-item" data-title="Campus walk" data-caption="ASCB grounds at sunset" data-src="gallery/campus.jpg">
+              <div class="carousel-thumb" style="background-image:url('gallery/campus.jpg')">Campus</div>
+              <div class="carousel-body">
+                <div class="carousel-title">Campus walk</div>
+                <div class="carousel-meta">ASCB grounds</div>
+              </div>
+            </article>
+
+            <article class="carousel-item" data-title="Section photo" data-caption="Replace with your section lineup" data-src="gallery/section.jpg">
+              <div class="carousel-thumb" style="background-image:url('gallery/section.jpg')">Section</div>
+              <div class="carousel-body">
+                <div class="carousel-title">Section photo</div>
+                <div class="carousel-meta">Section lineup</div>
+              </div>
+            </article>
+
+            <article class="carousel-item" data-title="Teachers" data-caption="Honoring mentors and staff" data-src="gallery/teachers.jpg">
+              <div class="carousel-thumb" style="background-image:url('gallery/teachers.jpg')">Teachers</div>
+              <div class="carousel-body">
+                <div class="carousel-title">Teachers</div>
+                <div class="carousel-meta">Mentors</div>
+              </div>
+            </article>
+
+            <article class="carousel-item" data-title="Family day" data-caption="Next generation moments" data-src="gallery/family.jpg">
+              <div class="carousel-thumb" style="background-image:url('gallery/family.jpg')">Family</div>
+              <div class="carousel-body">
+                <div class="carousel-title">Family day</div>
+                <div class="carousel-meta">Next generation</div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <button class="carousel-btn" type="button" id="carousel-next" aria-label="Next">›</button>
+      </div>
+    </section>
+
+    <div class="shell-inner">
+      <main class="main">
+
+        <section class="sections">
+          <section class="panel" id="section-events">
+            <div class="panel-header">
+              <div>
+                <div class="panel-eyebrow">Events</div>
+                <div class="panel-title">Reunions and milestones</div>
+              </div>
+              <span class="badge">Highlights</span>
+            </div>
+            <p class="panel-sub">A quick snapshot of recent and upcoming batch activities.</p>
+
+            <div class="timeline-list">
+              <article class="timeline-item">
+                <div class="timeline-date">2027</div>
+                <div class="timeline-main">
+                  <div class="timeline-name">25th Year Homecoming</div>
+                  <div class="timeline-meta">Campus tour, recognition of teachers, and gala night.</div>
+                  <div class="timeline-tag">Target: March 2027 · Save the date</div>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <div class="timeline-date">2025</div>
+                <div class="timeline-main">
+                  <div class="timeline-name">Mini City Meetups</div>
+                  <div class="timeline-meta">Informal dinners organized by classmates in major cities.</div>
+                  <div class="timeline-tag">Ongoing · Volunteer hosts welcome</div>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <div class="timeline-date">2022</div>
+                <div class="timeline-main">
+                  <div class="timeline-name">20th Year Virtual Reunion</div>
+                  <div class="timeline-meta">Online catch-up with highlight videos and yearbook photos.</div>
+                  <div class="timeline-tag">Completed · Recording available on request</div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel" id="section-groups">
+            <div class="panel-header">
+              <div>
+                <div class="panel-eyebrow">Community</div>
+                <div class="panel-title">Sections and groups</div>
+              </div>
+              <span class="badge">Directory-ready</span>
+            </div>
+            <p class="panel-sub">List sections, club batches, or group chats without exposing private details.</p>
+
+            <div class="grid-stats">
+              <div class="stat-card">
+                <div class="stat-label">Sections</div>
+                <div class="stat-value">4</div>
+                <div class="stat-pill">Alpha · Beta · Gamma · Delta</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Class officers</div>
+                <div class="stat-value">8</div>
+                <div class="stat-pill">Per section and batch-wide</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Registered</div>
+                <div class="stat-value" id="dir-count-inline">0</div>
+                <div class="stat-pill">Batch list signups</div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- LEFT HUB: STACKED (DIRECTORY BELOW RSVP) -->
+        <section class="hub" id="section-hub">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-eyebrow">Community Hub</div>
+                <div class="panel-title">RSVP · Batch List</div>
+              </div>
+              <span class="badge" id="hub-mode">Local</span>
+            </div>
+            <p class="panel-sub">Directory is now below RSVP. Fundraising and Suggestions are on the right panel.</p>
+
+            <div class="hub-stack">
+              <!-- RSVP -->
+              <section class="panel" style="margin:0">
+                <div class="panel-header">
+                  <div>
+                    <div class="panel-eyebrow">Upcoming</div>
+                    <div class="panel-title">Alumni Night RSVP</div>
+                  </div>
+                  <span class="badge" id="rsvp-count-badge">0 attending</span>
+                </div>
+                <p class="panel-sub">Confirm if you will attend.</p>
+
+                <form id="rsvp-form" style="display:grid;gap:8px;margin-top:8px">
+                  <input class="chat-input" id="rsvp-name" maxlength="40" placeholder="Full name" required>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                    <input class="chat-input" id="rsvp-section" maxlength="20" placeholder="Section (e.g. Alpha)" required>
+                    <input class="chat-input" id="rsvp-class" maxlength="30" placeholder="4th year class (e.g. 4-A)" required>
+                  </div>
+                  <select class="chat-input" id="rsvp-status" required>
+                    <option value="yes">✅ Will attend</option>
+                    <option value="maybe">🤔 Maybe</option>
+                    <option value="no">❌ Can't attend</option>
+                  </select>
+                  <button class="chat-send" type="submit">Submit RSVP</button>
+                  <div style="font-size:10px;color:#cbd5f5;opacity:.9" id="rsvp-status-line">Ready.</div>
+                </form>
+
+                <div class="timeline-list" id="rsvp-list" style="margin-top:10px"></div>
+              </section>
+
+              <!-- DIRECTORY -->
+              <section class="panel" style="margin:0">
+                <div class="panel-header">
+                  <div>
+                    <div class="panel-eyebrow">Batch Directory</div>
+                    <div class="panel-title">Sign up list</div>
+                  </div>
+                  <span class="badge" id="dir-count-badge">0 signed</span>
+                </div>
+                <p class="panel-sub">Add your name, section, and 4th year class.</p>
+
+                <form id="dir-form" style="display:grid;gap:8px;margin-top:8px">
+                  <input class="chat-input" id="dir-name" maxlength="40" placeholder="Full name" required>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                    <input class="chat-input" id="dir-section" maxlength="20" placeholder="Section" required>
+                    <input class="chat-input" id="dir-class" maxlength="30" placeholder="4th year class" required>
+                  </div>
+                  <button class="chat-send" type="submit">Save to batch list</button>
+                  <div style="font-size:10px;color:#cbd5f5;opacity:.9" id="dir-status-line">Ready.</div>
+                </form>
+
+                <div class="timeline-list" id="dir-list" style="margin-top:10px"></div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- RIGHT PANEL -->
+      <aside class="side">
+        <div class="right-stack">
+
+          <section>
+            <div class="clock-card">
+              <div class="clock-time" id="ph-clock-time">--:--:--</div>
+              <div class="clock-meta">Philippine Standard Time (Asia/Manila)</div>
+            </div>
+          </section>
+
+          <section>
+            <div class="radio-card">
+              <div class="radio-header">
+                <div class="radio-title">Sulap Radio Stream</div>
+                <div class="radio-badge">Live</div>
+              </div>
+
+              <div class="radio-body">
+                Now Playing is pulled from AzuraCast public API. Requests open in your public station page.
+              </div>
+
+              <div class="nowplaying">
+                <div class="np-art" id="np-art"></div>
+                <div>
+                  <div class="np-title" id="np-title">Loading now playing…</div>
+                  <div class="np-meta" id="np-artist">Please wait</div>
+                  <div class="np-small" id="np-extra">—</div>
+                </div>
+              </div>
+
+              <div class="radio-controls">
+                <button class="radio-play" id="radio-toggle" type="button">
+                  <span id="radio-toggle-icon">▶</span>
+                  <span id="radio-toggle-label">Play</span>
+                </button>
+
+                <a class="radio-mini" id="request-link" href="https://a11.asurahosting.com/public/sulap_radio/requests" target="_blank" rel="noopener">Request</a>
+
+                <div class="radio-volume-row">
+                  <span>Vol</span>
+                  <input class="radio-volume" id="radio-volume" type="range" min="0" max="1" step="0.01" value="0.8">
+                </div>
+              </div>
+
+              <div class="radio-status" id="radio-status">Ready.</div>
+            </div>
+          </section>
+
+          <!-- FUNDRAISING -->
+          <section>
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-eyebrow">Fundraising</div>
+                  <div class="panel-title">Pledges</div>
+                </div>
+                <span class="badge" id="fund-total-badge">₱0</span>
+              </div>
+              <p class="panel-sub">Pledge any amount (PHP).</p>
+
+              <form id="fund-form" style="display:grid;gap:8px;margin-top:8px">
+                <input class="chat-input" id="fund-name" maxlength="40" placeholder="Your name" required>
+                <input class="chat-input" id="fund-amount" type="number" min="0" step="1" placeholder="Amount (PHP)" required>
+                <input class="chat-input" id="fund-note" maxlength="120" placeholder="Note (optional)">
+                <button class="chat-send" type="submit">Submit pledge</button>
+                <div style="font-size:10px;color:#cbd5f5;opacity:.9" id="fund-status-line">Ready.</div>
+              </form>
+
+              <div class="timeline-list" id="fund-list" style="margin-top:10px"></div>
+            </div>
+          </section>
+
+          <!-- Suggestions -->
+          <section id="section-contact">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="panel-eyebrow">Suggestion Box</div>
+                  <div class="panel-title">Ideas for the event</div>
+                </div>
+                <span class="badge">Open</span>
+              </div>
+              <p class="panel-sub">Send suggestions or ideas.</p>
+
+              <form id="suggest-form" style="display:grid;gap:8px;margin-top:8px">
+                <input class="chat-input" id="suggest-name" maxlength="40" placeholder="Your name (optional)">
+                <input class="chat-input" id="suggest-text" maxlength="200" placeholder="Suggestion / ideas" required>
+                <button class="chat-send" type="submit">Send suggestion</button>
+                <div style="font-size:10px;color:#cbd5f5;opacity:.9" id="suggest-status-line">Ready.</div>
+              </form>
+
+              <div class="timeline-list" id="suggest-list" style="margin-top:10px"></div>
+            </div>
+          </section>
+
+          <!-- Guestbook -->
+          <section>
+            <div class="chat-card">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 2px 6px">
+                <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase">Guest Messages</div>
+                <div style="font-size:10px;color:#cbd5f5;opacity:.9;text-align:right;line-height:1.2">
+                  guestbook<br><span id="guestbook-mode">local</span>
+                </div>
+              </div>
+
+              <div class="chat-log" id="chat-log">
+                <div class="chat-system-line" id="guestbook-system">
+                  Loading guestbook… (If Firebase is not configured, it will work in local mode.)
+                </div>
+              </div>
+
+              <form class="chat-form" id="chat-form">
+                <input class="chat-input" id="chat-name" type="text" maxlength="32" placeholder="Name">
+                <input class="chat-input" id="chat-message" type="text" maxlength="160" placeholder="Leave a message for the batch">
+                <button class="chat-send" id="chat-send" type="submit">Send</button>
+              </form>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 2px 0">
+                <div id="guestbook-status" style="font-size:10px;color:#cbd5f5;opacity:.95">Ready.</div>
+                <button type="button" id="guestbook-clear-local"
+                  style="border-radius:999px;border:1px solid rgba(148,163,184,.55);background:rgba(15,23,42,.85);color:#e5e7eb;padding:5px 10px;font-size:11px;cursor:pointer">
+                  Clear my view
+                </button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </aside>
+    </div>
+
+    <footer class="footer">
+      <div>© <span id="footer-year"></span> ASCB Batch 2002 Alumni. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#section-about" class="footer-link">Overview</a>
+        <a href="#section-events" class="footer-link">Reunions</a>
+        <a href="#section-hub" class="footer-link">Hub</a>
+        <a href="#section-contact" class="footer-link">Contact</a>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Gallery lightbox">
+    <div class="lightbox-media">
+      <img id="lightbox-img" alt="Gallery image" />
+    </div>
+    <div class="lightbox-bar">
+      <div style="min-width:0">
+        <div class="lightbox-title" id="lightbox-title">Title</div>
+        <div class="lightbox-caption" id="lightbox-caption">Caption</div>
+        <div class="lightbox-nav">
+          <button type="button" id="lightbox-prev">← Prev</button>
+          <button type="button" id="lightbox-next">Next →</button>
+        </div>
+      </div>
+      <button class="lightbox-close" type="button" id="lightbox-close" aria-label="Close">×</button>
+    </div>
+  </div>
+</div>
+
+<audio id="batch-radio" preload="none"></audio>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+/* =========================================================
+   Firebase config (optional)
+   If not set, everything saves locally per-browser.
+   ========================================================= */
+const firebaseConfig = {
+  // apiKey: "....",
+  // authDomain: "....",
+  // databaseURL: "....",
+  // projectId: "....",
+  // storageBucket: "....",
+  // messagingSenderId: "....",
+  // appId: "...."
+};
+try{
+  if(firebaseConfig && firebaseConfig.apiKey){
+    firebase.initializeApp(firebaseConfig);
+  }
+}catch(e){}
+
+/* ===== AzuraCast + stream ===== */
+const AZ_BASE = "https://a11.asurahosting.com";
+const STATION_SHORTCODE = "sulap_radio";
+const STREAM_URL = "https://a11.asurahosting.com:8400/radio.mp3";
+
+/* ===== NAV ===== */
+const navLinks = document.querySelectorAll(".nav-link");
+const sectionsById = {
+  "section-about": document.getElementById("section-about"),
+  "section-events": document.getElementById("section-events"),
+  "section-groups": document.getElementById("section-groups"),
+  "section-hub": document.getElementById("section-hub"),
+  "section-contact": document.getElementById("section-contact")
+};
+function setActiveNav(targetId){
+  navLinks.forEach(link=>{
+    link.classList.toggle("active", link.getAttribute("data-target") === targetId);
+  });
+}
+function scrollToSection(targetId){
+  const section = sectionsById[targetId];
+  if(!section) return;
+  section.scrollIntoView({behavior:"smooth", block:"start"});
+  setActiveNav(targetId);
+}
+navLinks.forEach(link=>{
+  link.addEventListener("click", ()=>scrollToSection(link.getAttribute("data-target")));
+});
+const footerYear = document.getElementById("footer-year");
+if(footerYear) footerYear.textContent = String(new Date().getFullYear());
+
+/* ===== CLOCK ===== */
+const phClockTime = document.getElementById("ph-clock-time");
+function updatePhClock(){
+  if(!phClockTime) return;
+  phClockTime.textContent = new Date().toLocaleTimeString("en-PH", {
+    hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:true, timeZone:"Asia/Manila"
+  });
+}
+updatePhClock();
+setInterval(updatePhClock, 1000);
+
+/* ===== CAROUSEL ARROWS ===== */
+(function(){
+  const track = document.getElementById("carousel-track");
+  const prev = document.getElementById("carousel-prev");
+  const next = document.getElementById("carousel-next");
+  if(!track || !prev || !next) return;
+
+  function step(){
+    const first = track.querySelector(".carousel-item");
+    if(!first) return 240;
+    const r = first.getBoundingClientRect();
+    return Math.max(200, Math.round(r.width + 12));
+  }
+  prev.addEventListener("click", ()=> track.scrollBy({left:-(step()*2), behavior:"smooth"}));
+  next.addEventListener("click", ()=> track.scrollBy({left:(step()*2), behavior:"smooth"}));
+})();
+
+/* ===== LIGHTBOX (CENTERED) ===== */
+(function(){
+  const items = Array.from(document.querySelectorAll(".carousel-item"));
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-img");
+  const lbTitle = document.getElementById("lightbox-title");
+  const lbCaption = document.getElementById("lightbox-caption");
+  const lbClose = document.getElementById("lightbox-close");
+  const lbPrev = document.getElementById("lightbox-prev");
+  const lbNext = document.getElementById("lightbox-next");
+  if(!items.length || !lb || !lbImg || !lbTitle || !lbCaption || !lbClose || !lbPrev || !lbNext) return;
+
+  let idx = -1;
+  function openAt(i){
+    if(i < 0 || i >= items.length) return;
+    idx = i;
+    const it = items[i];
+    const title = it.getAttribute("data-title") || "Gallery item";
+    const caption = it.getAttribute("data-caption") || "";
+    const src = it.getAttribute("data-src") || "";
+    lbTitle.textContent = title;
+    lbCaption.textContent = caption;
+    lbImg.src = src;
+    lbImg.alt = title;
+    lb.classList.add("open");
+    lb.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden";
+  }
+  function close(){
+    lb.classList.remove("open");
+    lb.setAttribute("aria-hidden","true");
+    document.body.style.overflow = "";
+    lbImg.src = "";
+    idx = -1;
+  }
+  function prev(){ if(items.length>1) openAt((idx-1+items.length)%items.length); }
+  function next(){ if(items.length>1) openAt((idx+1)%items.length); }
+
+  items.forEach((it,i)=> it.addEventListener("click",(e)=>{ e.preventDefault(); openAt(i); }));
+  lbClose.addEventListener("click", close);
+  lb.addEventListener("click",(e)=>{ if(e.target === lb) close(); });
+  lbPrev.addEventListener("click", prev);
+  lbNext.addEventListener("click", next);
+
+  document.addEventListener("keydown",(e)=>{
+    if(!lb.classList.contains("open")) return;
+    if(e.key==="Escape") close();
+    if(e.key==="ArrowLeft") prev();
+    if(e.key==="ArrowRight") next();
+  });
+})();
+
+/* ===== AZURACAST NOW PLAYING + PLAYER ===== */
+const radioEl = document.getElementById("batch-radio");
+radioEl.src = STREAM_URL;
+const radioToggle = document.getElementById("radio-toggle");
+const radioToggleIcon = document.getElementById("radio-toggle-icon");
+const radioToggleLabel = document.getElementById("radio-toggle-label");
+const radioStatus = document.getElementById("radio-status");
+const radioVolume = document.getElementById("radio-volume");
+const npArt = document.getElementById("np-art");
+const npTitle = document.getElementById("np-title");
+const npArtist = document.getElementById("np-artist");
+const npExtra = document.getElementById("np-extra");
+document.getElementById("request-link").href = `${AZ_BASE}/public/${STATION_SHORTCODE}/requests`;
+
+function safeText(el, t){ if(el) el.textContent = (t && String(t).trim()) ? String(t) : "—"; }
+function setRadioUI(playing){
+  if(playing){
+    radioToggleIcon.textContent = "⏸";
+    radioToggleLabel.textContent = "Pause";
+  }else{
+    radioToggleIcon.textContent = "▶";
+    radioToggleLabel.textContent = "Play";
+  }
+}
+if(radioVolume){
+  radioEl.volume = Number(radioVolume.value || 0.8);
+  radioVolume.addEventListener("input", ()=> radioEl.volume = Number(radioVolume.value || 0.8));
+}
+async function fetchNowPlaying(){
+  const url = `${AZ_BASE}/api/nowplaying/${encodeURIComponent(STATION_SHORTCODE)}`;
+  try{
+    const r = await fetch(url, {cache:"no-store"});
+    if(!r.ok) throw new Error("bad response");
+    const data = await r.json();
+    const song = data?.now_playing?.song;
+    const title = song?.title || song?.text || "Unknown Title";
+    const artist = song?.artist || "";
+    const listeners = data?.listeners?.current;
+    safeText(npTitle, title);
+    safeText(npArtist, artist || "—");
+    safeText(npExtra, (typeof listeners === "number") ? `Listeners: ${listeners}` : "");
+    const artUrl = song?.art || song?.artwork || song?.art_url;
+    if(npArt){
+      npArt.style.backgroundImage = artUrl ? `url('${artUrl.replace(/'/g,"%27")}')` : "";
+      npArt.style.backgroundSize = "cover";
+      npArt.style.backgroundPosition = "center";
     }
-    .pill{
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(214,178,94,.35);
-      color: rgba(214,178,94,.95);
-      font-weight:800;
-      letter-spacing:.18em;
-      font-size:11px;
-      text-transform:uppercase;
-      cursor:default;
-      user-select:none;
-      white-space: nowrap;
+  }catch(e){
+    safeText(npTitle, "Now Playing unavailable");
+    safeText(npArtist, "Check AzuraCast / CORS");
+    safeText(npExtra, "");
+  }
+}
+fetchNowPlaying();
+setInterval(fetchNowPlaying, 10000);
+
+radioToggle.addEventListener("click", async ()=>{
+  try{
+    if(radioEl.paused){
+      radioStatus.textContent = "Connecting…";
+      await radioEl.play();
+      radioStatus.textContent = "Playing.";
+      setRadioUI(true);
+    }else{
+      radioEl.pause();
+      radioStatus.textContent = "Paused.";
+      setRadioUI(false);
     }
-    .iconBtn{
-      width:40px; height:40px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      cursor:pointer;
-      transition: transform 150ms ease, border-color 150ms ease;
-      display:grid;
-      place-items:center;
+  }catch(e){
+    radioStatus.textContent = "Cannot play (tap Play again / autoplay blocked).";
+    setRadioUI(false);
+  }
+});
+radioEl.addEventListener("playing", ()=>setRadioUI(true));
+radioEl.addEventListener("pause", ()=>setRadioUI(false));
+
+/* ======================================================
+   DATA: RSVP + Fund + Directory + Suggestions + Guestbook
+   Firebase (if configured) else localStorage
+   ====================================================== */
+const DB_ROOT = "ascb_batch2002";
+function hasFirebaseReady(){
+  try{ return !!(window.firebase && firebase.apps && firebase.apps.length); }
+  catch(e){ return false; }
+}
+function esc(s){
+  return String(s||"").replace(/[&<>"']/g, m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
+}
+function fmtPH(ts){
+  const d = new Date(ts);
+  if(isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("en-PH",{year:"numeric",month:"short",day:"2-digit"}) + " · " +
+         d.toLocaleTimeString("en-PH",{hour:"2-digit",minute:"2-digit",hour12:true});
+}
+function makeItemHTML(title, meta, tag){
+  return `
+  <article class="timeline-item">
+    <div class="timeline-date">${esc(title)}</div>
+    <div class="timeline-main">
+      <div class="timeline-name">${esc(meta)}</div>
+      ${tag ? `<div class="timeline-tag">${esc(tag)}</div>` : ""}
+    </div>
+  </article>`;
+}
+function peso(n){
+  try{ return "₱" + Number(n||0).toLocaleString("en-PH"); }
+  catch(e){ return "₱0"; }
+}
+function pill(status){
+  if(status==="yes") return "✅ Attending";
+  if(status==="maybe") return "🤔 Maybe";
+  return "❌ Not attending";
+}
+
+const storage = {
+  mode: hasFirebaseReady() ? "firebase" : "local",
+  async push(path, obj){
+    if(this.mode==="firebase"){
+      return firebase.database().ref(`${DB_ROOT}/${path}`).push(obj);
     }
-    .iconBtn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(214,178,94,.55);
-     
+    const key = `${DB_ROOT}:${path}`;
+    const raw = localStorage.getItem(key) || "[]";
+    let arr=[]; try{ arr=JSON.parse(raw);}catch(e){}
+    arr.push(obj);
+    localStorage.setItem(key, JSON.stringify(arr.slice(-300)));
+    return true;
+  },
+  listenLast(path, limit, cb){
+    if(this.mode==="firebase"){
+      const ref = firebase.database().ref(`${DB_ROOT}/${path}`).limitToLast(limit);
+      ref.off();
+      ref.on("value", snap=>{
+        const v = snap.val() || {};
+        cb(Object.values(v));
+      });
+      return;
+    }
+    const key = `${DB_ROOT}:${path}`;
+    const raw = localStorage.getItem(key) || "[]";
+    let arr=[]; try{ arr=JSON.parse(raw);}catch(e){}
+    cb(arr.slice(-limit));
+  }
+};
+
+document.getElementById("hub-mode").textContent = storage.mode === "firebase" ? "Online" : "Local";
+document.getElementById("guestbook-mode").textContent = storage.mode === "firebase" ? "online" : "local";
+
+/* RSVP */
+const rsvpForm = document.getElementById("rsvp-form");
+const rsvpList = document.getElementById("rsvp-list");
+const rsvpCountBadge = document.getElementById("rsvp-count-badge");
+const rsvpStatusLine = document.getElementById("rsvp-status-line");
+function renderRSVP(items){
+  if(!rsvpList) return;
+  const sorted = items.slice().sort((a,b)=>(b.ts||0)-(a.ts||0));
+  rsvpList.innerHTML = sorted.slice(0,12).map(m=>{
+    const title = (m.status==="yes") ? "Attending" : (m.status==="maybe" ? "Maybe" : "No");
+    const meta = `${m.name||"Anonymous"} — ${m.section||"-"} / ${m.class||"-"}`;
+    const tag = `${pill(m.status)} · ${fmtPH(m.ts)}`;
+    return makeItemHTML(title, meta, tag);
+  }).join("");
+  const attending = items.filter(x=>x.status==="yes").length;
+  if(rsvpCountBadge) rsvpCountBadge.textContent = `${attending} attending`;
+}
+storage.listenLast("rsvp", 200, renderRSVP);
+if(rsvpForm){
+  rsvpForm.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    const name = (document.getElementById("rsvp-name").value||"").trim().slice(0,40);
+    const section = (document.getElementById("rsvp-section").value||"").trim().slice(0,20);
+    const cls = (document.getElementById("rsvp-class").value||"").trim().slice(0,30);
+    const status = (document.getElementById("rsvp-status").value||"yes").trim();
+    if(!name || !section || !cls) return;
+    rsvpStatusLine.textContent = "Saving…";
+    try{
+      await storage.push("rsvp",{name,section,class:cls,status,ts:Date.now()});
+      rsvpStatusLine.textContent = "Saved ✅";
+      e.target.reset();
+    }catch(err){
+      rsvpStatusLine.textContent = "Failed to save.";
+    }
+  });
+}
+
+/* Directory */
+const dirForm = document.getElementById("dir-form");
+const dirList = document.getElementById("dir-list");
+const dirCountBadge = document.getElementById("dir-count-badge");
+const dirStatusLine = document.getElementById("dir-status-line");
+const dirCountInline = document.getElementById("dir-count-inline");
+function renderDir(items){
+  if(!dirList) return;
+  const sorted = items.slice().sort((a,b)=>(b.ts||0)-(a.ts||0));
+  dirList.innerHTML = sorted.slice(0,12).map(m=>{
+    const meta = `${m.name||"Anonymous"} — ${m.section||"-"} / ${m.class||"-"}`;
+    const tag = fmtPH(m.ts);
+    return makeItemHTML("Signed", meta, tag);
+  }).join("");
+  if(dirCountBadge) dirCountBadge.textContent = `${items.length} signed`;
+  if(dirCountInline) dirCountInline.textContent = String(items.length);
+}
+storage.listenLast("directory", 300, renderDir);
+if(dirForm){
+  dirForm.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    const name = (document.getElementById("dir-name").value||"").trim().slice(0,40);
+    const section = (document.getElementById("dir-section").value||"").trim().slice(0,20);
+    const cls = (document.getElementById("dir-class").value||"").trim().slice(0,30);
+    if(!name || !section || !cls) return;
+    dirStatusLine.textContent = "Saving…";
+    try{
+      await storage.push("directory",{name,section,class:cls,ts:Date.now()});
+      dirStatusLine.textContent = "Saved ✅";
+      e.target.reset();
+    }catch(err){
+      dirStatusLine.textContent = "Failed to save.";
+    }
+  });
+}
+
+/* Fundraising */
+const fundForm = document.getElementById("fund-form");
+const fundList = document.getElementById("fund-list");
+const fundTotalBadge = document.getElementById("fund-total-badge");
+const fundStatusLine = document.getElementById("fund-status-line");
+function renderFund(items){
+  if(!fundList) return;
+  const sorted = items.slice().sort((a,b)=>(b.ts||0)-(a.ts||0));
+  fundList.innerHTML = sorted.slice(0,12).map(m=>{
+    const meta = `${m.name||"Anonymous"}${m.note ? " — " + m.note : ""}`;
+    const tag = `${peso(m.amount)} · ${fmtPH(m.ts)}`;
+    return makeItemHTML("Pledge", meta, tag);
+  }).join("");
+  const total = items.reduce((sum,x)=>sum + (Number(x.amount)||0), 0);
+  if(fundTotalBadge) fundTotalBadge.textContent = peso(total);
+}
+storage.listenLast("fund", 200, renderFund);
+if(fundForm){
+  fundForm.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    const name = (document.getElementById("fund-name").value||"").trim().slice(0,40);
+    const amount = Number((document.getElementById("fund-amount").value||"0").trim());
+    const note = (document.getElementById("fund-note").value||"").trim().slice(0,120);
+    if(!name || !(amount>=0)) return;
+    fundStatusLine.textContent = "Saving…";
+    try{
+      await storage.push("fund",{name,amount,note,ts:Date.now()});
+      fundStatusLine.textContent = "Saved ✅";
+      e.target.reset();
+    }catch(err){
+      fundStatusLine.textContent = "Failed to save.";
+    }
+  });
+}
+
+/* Suggestions */
+const suggestForm = document.getElementById("suggest-form");
+const suggestList = document.getElementById("suggest-list");
+const suggestStatusLine = document.getElementById("suggest-status-line");
+function renderSuggest(items){
+  if(!suggestList) return;
+  const sorted = items.slice().sort((a,b)=>(b.ts||0)-(a.ts||0));
+  suggestList.innerHTML = sorted.slice(0,10).map(m=>{
+    const meta = `${m.text||""}`;
+    const tag = `${m.name ? m.name + " · " : ""}${fmtPH(m.ts)}`;
+    return makeItemHTML("Idea", meta, tag);
+  }).join("");
+}
+storage.listenLast("suggestions", 200, renderSuggest);
+if(suggestForm){
+  suggestForm.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    const name = (document.getElementById("suggest-name").value||"").trim().slice(0,40);
+    const text = (document.getElementById("suggest-text").value||"").trim().slice(0,200);
+    if(!text) return;
+    suggestStatusLine.textContent = "Saving…";
+    try{
+      await storage.push("suggestions",{name,text,ts:Date.now()});
+      suggestStatusLine.textContent = "Sent ✅";
+      e.target.reset();
+    }catch(err){
+      suggestStatusLine.textContent = "Failed to save.";
+    }
+  });
+}
+
+/* Guestbook */
+const chatForm = document.getElementById("chat-form");
+const chatLog = document.getElementById("chat-log");
+const chatNameInput = document.getElementById("chat-name");
+const chatMessageInput = document.getElementById("chat-message");
+const guestStatus = document.getElementById("guestbook-status");
+const guestClear = document.getElementById("guestbook-clear-local");
+
+function appendChatMessage(m){
+  if(!chatLog) return;
+  const wrap = document.createElement("div");
+  wrap.className = "chat-message";
+  wrap.innerHTML = `
+    <div class="chat-message-header">
+      <span class="chat-message-name">${esc(m.name||"Anonymous")}</span>
+      <span class="chat-message-time">${esc(fmtPH(m.ts))}</span>
+    </div>
+    <div class="chat-message-text">${esc(m.text||"")}</div>`;
+  chatLog.appendChild(wrap);
+}
+function renderGuestbook(items){
+  if(!chatLog) return;
+  chatLog.innerHTML = "";
+  items.slice().sort((a,b)=>(a.ts||0)-(b.ts||0)).slice(-60).forEach(appendChatMessage);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+storage.listenLast("guestbook", 200, renderGuestbook);
+
+if(chatForm){
+  chatForm.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    const name = (chatNameInput.value||"").trim().slice(0,32) || "Anonymous";
+    const text = (chatMessageInput.value||"").trim().slice(0,160);
+    if(!text) return;
+    try{
+      guestStatus.textContent = "Sending…";
+      await storage.push("guestbook",{name,text,ts:Date.now()});
+      guestStatus.textContent = "Sent ✅";
+      chatMessageInput.value = "";
+    }catch(err){
+      guestStatus.textContent = "Send failed.";
+    }
+  });
+}
+if(guestClear){
+  guestClear.addEventListener("click", ()=>{
+    if(storage.mode==="firebase"){
+      guestStatus.textContent = "Online guestbook can't be cleared from here.";
+      chatLog.scrollTop = 0;
+      return;
+    }
+    localStorage.removeItem(`${DB_ROOT}:guestbook`);
+    storage.listenLast("guestbook", 200, renderGuestbook);
+    guestStatus.textContent = "Cleared local view.";
+  });
+}
+
+console.log("Storage mode:", storage.mode);
+</script>
+</body>
+</html>
