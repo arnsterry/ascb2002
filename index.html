@@ -396,12 +396,12 @@
       color: var(--gold);
     }
 
-    /* CHAT */
+    /* CHAT BUTTON (opens Messenger) */
     .chatFab{
       position: fixed;
       left: 18px;
       bottom: 18px;
-      z-index: 130;
+      z-index: 9999; /* ensure clickable */
     }
     .chatOpenBtn{
       border: 1px solid rgba(255,255,255,.18);
@@ -416,85 +416,6 @@
     }
     .chatOpenBtn:hover{
       transform: translateY(-2px);
-      border-color: rgba(214,178,94,.55);
-      color: var(--gold);
-    }
-    .chatbox{
-      position: fixed;
-      left: 18px;
-      bottom: 18px;
-      z-index: 135;
-      width: 340px;
-      max-width: calc(100vw - 36px);
-      background: rgba(8,14,28,.72);
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 18px;
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-      display:none;
-      backdrop-filter: blur(12px);
-    }
-    .chatHead{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding: 10px 12px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      gap:10px;
-    }
-    .chatTitle{
-      font-weight: 900;
-      letter-spacing:.10em;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-    .chatBody{
-      padding: 10px 12px;
-      height: 260px;
-      overflow:auto;
-    }
-    .msg{ margin: 8px 0; display:flex; }
-    .msg.you{ justify-content:flex-end; }
-    .bubble{
-      max-width: 85%;
-      padding: 10px 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: rgba(238,242,255,.92);
-      font-size: 13px;
-      line-height: 1.35;
-    }
-    .msg.you .bubble{
-      background: rgba(214,178,94,.12);
-      border-color: rgba(214,178,94,.30);
-    }
-    .chatFoot{
-      display:flex;
-      gap:10px;
-      padding: 10px 12px;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .chatFoot input{
-      flex:1;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.12);
-      color: var(--text);
-      border-radius: 14px;
-      padding: 10px 12px;
-      outline:none;
-    }
-    .chatFoot button{
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      border-radius: 14px;
-      padding: 10px 12px;
-      cursor:pointer;
-      transition: transform 140ms ease, border-color 140ms ease;
-    }
-    .chatFoot button:hover{
-      transform: translateY(-1px);
       border-color: rgba(214,178,94,.55);
       color: var(--gold);
     }
@@ -515,18 +436,14 @@
       left: 50%;
       bottom: 14px;
       transform: translateX(-50%);
-      z-index: 125;
-
+      z-index: 5000; /* below chat button */
       width: min(920px, calc(100vw - 28px));
       border-radius: 18px;
-
       background: rgba(8, 14, 28, 0.42);
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: 0 18px 55px rgba(0,0,0,.30);
-
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-
       overflow: hidden;
     }
     .dockInner{
@@ -547,7 +464,6 @@
       font-size: 10px;
       letter-spacing: .22em;
       text-transform: uppercase;
-
       color: rgba(6,10,20,.95);
       background: rgba(214,178,94,.95);
       border: 1px solid rgba(214,178,94,.55);
@@ -634,7 +550,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 999;
+      z-index: 99999;
       padding: 18px;
     }
     .lightboxInner{
@@ -698,24 +614,34 @@
       .dockVol{ display:none; }
       .musicDock{ border-radius: 16px; }
     }
-    function openMessengerChat() {
-  // Try to open the Facebook Customer Chat plugin if it's loaded
-  try {
-    if (window.FB && FB.CustomerChat && typeof FB.CustomerChat.show === "function") {
-      FB.CustomerChat.show(true);
-      FB.CustomerChat.open(); // some versions support this
-      return;
-    }
-  } catch (e) {}
-
-  // Fallback: open direct messenger link (always works)
-  window.open("https://m.me/61568508901711", "_blank");
-}
-
   </style>
 </head>
 
 <body>
+  <!-- ✅ Facebook Messenger Customer Chat Plugin -->
+  <div id="fb-root"></div>
+  <script>
+    // Loads Facebook SDK for the Customer Chat plugin
+    window.fbAsyncInit = function() {
+      FB.init({ xfbml: true, version: 'v19.0' });
+    };
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <div class="fb-customerchat"
+    attribution="install_email"
+    page_id="61568508901711"
+    theme_color="#d6b25e"
+    logged_in_greeting="Hi Batchmate 👋 How can we help you?"
+    logged_out_greeting="Hi! Please log in to Messenger to chat.">
+  </div>
+
   <!-- Section arrows -->
   <div class="navArrows">
     <button class="arrowBtn" id="secUp">▲</button>
@@ -757,7 +683,7 @@
       <div class="heroInner">
         <div class="heroKickerRow">
           <span class="dot"></span>
-          <span>ASCB HS ALUMNI BATCH 2002</span>
+          <span>OFFICIAL ALUMNI PORTAL</span>
         </div>
 
         <div class="heroGlass">
@@ -767,6 +693,8 @@
           <div class="glassQuote">“Soriano Colleges, Alma mater Dear.”</div>
           <div class="glassTagline">RECONNECT · REMEMBER · CELEBRATE</div>
         </div>
+
+        <!-- ✅ TAB SLIDER REMOVED (as requested) -->
 
       </div>
     </section>
@@ -780,7 +708,6 @@
 
       <div style="margin-top:16px; padding:18px; border-radius:18px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);">
         • Reunion Night — 7:00 PM October 2026 | No fix date.<br>
-
       </div>
     </section>
 
@@ -802,22 +729,23 @@
                 <div class="cardMeta">December 27, 2025</div>
               </div>
             </article>
+
             <article class="card">
               <img src="assets/alumni2.jpg" alt="Alumni 2">
               <div class="cardBody">
                 <div class="cardName">Mhi-mhi and Bhambi</div>
                 <div class="cardMeta">Kigjag Jammerz</div>
-
               </div>
             </article>
+
             <article class="card">
               <img src="assets/alumni3.jpg" alt="Alumni 3">
               <div class="cardBody">
                 <div class="cardName">Batch bonding 2026</div>
                 <div class="cardMeta">happening Jan. 03, 2026</div>
-
               </div>
             </article>
+
             <article class="card">
               <img src="assets/alumni4.jpg" alt="Alumni 4">
               <div class="cardBody">
@@ -825,6 +753,7 @@
                 <div class="cardMeta">Sponsored by - Doomciy</div>
               </div>
             </article>
+
             <article class="card">
               <img src="assets/alumni5.jpg" alt="Alumni 5">
               <div class="cardBody">
@@ -855,28 +784,9 @@
 
   <div class="footer">© <span id="year"></span> ASCB Batch 2002 Alumni</div>
 
-  <!-- CHAT -->
+  <!-- ✅ CHAT BUTTON (opens Messenger) -->
   <div class="chatFab" id="chatFab">
     <button class="chatOpenBtn" id="openChat">💬 Chat</button>
-  </div>
-
-  <div class="chatbox" id="chatbox">
-    <div class="chatHead">
-      <div class="chatTitle">ALUMNI CHAT</div>
-      <div style="display:flex; gap:8px;">
-        <button class="iconBtn" id="minChat" title="Minimize" style="width:34px;height:34px;border-radius:12px;">—</button>
-        <button class="iconBtn" id="hideChat" title="Hide" style="width:34px;height:34px;border-radius:12px;">✕</button>
-      </div>
-    </div>
-
-    <div class="chatBody" id="chatBody">
-      <div class="msg bot"><div class="bubble">Hi! Click an alumni photo to open the lightbox 📸</div></div>
-    </div>
-
-    <div class="chatFoot">
-      <input id="chatInput" type="text" placeholder="Type a message...">
-      <button id="sendMsg">Send</button>
-    </div>
   </div>
 
   <!-- MUSIC PLAYER -->
@@ -918,8 +828,9 @@
   <script>
     // CONFIG: Put your AzuraCast stream URL here
     const AZURACAST_STREAM_URL = "https://a11.asurahosting.com:8400/radio.mp3";
-    const qs  = (s)=>document.querySelector(s);
+    const PAGE_MESSENGER_LINK = "https://m.me/61568508901711";
 
+    const qs  = (s)=>document.querySelector(s);
     qs("#year").textContent = String(new Date().getFullYear());
 
     // Smooth scroll + small jQuery animation
@@ -989,7 +900,7 @@
     }
     anim();
 
-    // Alumni carousel autoplay
+    // ✅ Alumni carousel autoplay
     const carTrack = qs("#carTrack");
     const carViewport = qs("#carViewport");
     let carIndex = 0;
@@ -1031,7 +942,7 @@
     window.addEventListener("resize", ()=>{ if (carIndex>carMax()) carIndex=carMax(); carRender(); });
     carRender(); carStart();
 
-    // AzuraCast player
+    // ✅ AzuraCast player
     const audio = qs("#audio");
     const playPause = qs("#playPause");
     const stopBtn = qs("#stopBtn");
@@ -1079,76 +990,6 @@
       musicWidget.classList.toggle("collapsed");
     });
 
-    // Chatbox
-    const openChat = qs("#openChat");
-    const hideChat = qs("#hideChat");
-    const minChat = qs("#minChat");
-    const chatBody = qs("#chatBody");
-    const chatInput = qs("#chatInput");
-    const sendMsg = qs("#sendMsg");
-    let minimized = false;
-
-    function addMsg(text, who="you"){
-      const row = document.createElement("div");
-      row.className = "msg " + who;
-      const bubble = document.createElement("div");
-      bubble.className = "bubble";
-      bubble.textContent = text;
-      row.appendChild(bubble);
-      chatBody.appendChild(row);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-    function botReply(v){
-      const t = v.toLowerCase();
-      if (t.includes("hi") || t.includes("hello")) return "Hello! Kumusta? How can I help you?";
-      if (t.includes("event")) return "Events section is ready—tell me your reunion schedule and I’ll format it.";
-      if (t.includes("directory")) return "We can add search + filtering per section, city, or work.";
-      return "Noted! Want this chat connected to Messenger/Telegram next?";
-    }
-
-    let hideTimer = null;
-    function clearAutoHide(){ if (hideTimer) clearTimeout(hideTimer); hideTimer = null; }
-    function scheduleAutoHide(){
-      clearAutoHide();
-      hideTimer = setTimeout(()=>{
-        if ($("#chatbox").is(":visible")){
-          $("#chatbox").fadeOut(140);
-          $("#chatFab").fadeIn(180);
-        }
-      }, 25000);
-    }
-
-    openChat.addEventListener("click", () => {
-  if (window.FB) {
-    FB.CustomerChat.show(true);
-  }
-   });
-
-    hideChat.addEventListener("click", () => {
-      $("#chatbox").stop(true,true).fadeOut(140);
-      $("#chatFab").stop(true,true).fadeIn(180);
-      clearAutoHide();
-    });
-    minChat.addEventListener("click", () => {
-      minimized = !minimized;
-      if (minimized){
-        $("#chatbox .chatBody, #chatbox .chatFoot").slideUp(160);
-      } else {
-        $("#chatbox .chatBody, #chatbox .chatFoot").slideDown(160);
-      }
-    });
-
-    function send(){
-      const v = chatInput.value.trim();
-      if (!v) return;
-      addMsg(v, "you");
-      chatInput.value = "";
-      scheduleAutoHide();
-      setTimeout(()=>addMsg(botReply(v), "bot"), 350);
-    }
-    sendMsg.addEventListener("click", send);
-    chatInput.addEventListener("keydown", (e)=>{ if (e.key === "Enter") send(); });
-
     // ✅ LIGHTBOX logic (click any alumni photo)
     const lightbox = qs("#lightbox");
     const lightboxImg = qs("#lightboxImg");
@@ -1179,34 +1020,34 @@
     window.addEventListener("keydown", (e)=>{
       if (e.key === "Escape" && lightbox.style.display === "flex") closeLightbox();
     });
+
+    // ✅ Messenger opener with guaranteed fallback
+    function openMessengerChat(){
+      // Always fallback works
+      const fallback = () => window.open(PAGE_MESSENGER_LINK, "_blank");
+
+      try {
+        if (window.FB && FB.CustomerChat && typeof FB.CustomerChat.show === "function") {
+          FB.CustomerChat.show(true);
+          // Some builds have open(), some don't — safe try:
+          if (typeof FB.CustomerChat.open === "function") FB.CustomerChat.open();
+          return;
+        }
+      } catch (e) {
+        // ignore and fallback
+      }
+      fallback();
+    }
+
+    // Bind chat button
+    const openChatBtn = qs("#openChat");
+    if (openChatBtn){
+      openChatBtn.addEventListener("click", (e)=>{
+        e.preventDefault();
+        openMessengerChat();
+      });
+    }
   </script>
-<!-- Messenger Chat Plugin -->
-<div id="fb-root"></div>
-
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      xfbml: true,
-      version: 'v19.0'
-    });
-  };
-
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-customerchat"
-  attribution="install_email"
-  page_id="61568508901711"
-  theme_color="#d6b25e"
-  logged_in_greeting="Hi Batchmate 👋 How can we help you?"
-  logged_out_greeting="Hi! Please log in to Messenger to chat."
-></div>
 
 </body>
 </html>
