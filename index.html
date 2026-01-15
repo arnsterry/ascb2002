@@ -1,0 +1,1170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ASCB Batch 2002 Alumni</title>
+
+  <!-- Aesthetic fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+
+  <style>
+    :root{
+      /* ✅ NAVY / REAL BLUE THEME */
+      --bg1:#071a3a;     /* deep navy */
+      --bg2:#04122b;     /* darker navy */
+      --text:#eef2ff;    /* light text */
+      --muted:rgba(238,242,255,.72);
+      --gold:#d6b25e;
+
+      --glass: rgba(8,14,28,.50);
+      --glass2: rgba(8,14,28,.72);
+
+      --shadow: 0 22px 60px rgba(0,0,0,.42);
+      --shadow2: 0 18px 55px rgba(0,0,0,.30);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Manrope, system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      overflow-x:hidden;
+
+      background:
+        radial-gradient(1200px 700px at 60% 20%, rgba(214,178,94,.10), transparent 60%),
+        radial-gradient(900px 600px at 20% 60%, rgba(90,135,255,.10), transparent 55%),
+        linear-gradient(180deg,var(--bg1),var(--bg2));
+
+      padding-bottom: 92px; /* space for bottom music dock */
+    }
+
+    .container{ width:min(1200px,92vw); margin-inline:auto; }
+    main{ padding-top:72px; }
+
+    /* TOPBAR */
+    .topbar{
+      position:fixed; top:0; left:0; right:0;
+      z-index:100;
+      background: rgba(6,10,20,.55);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar-inner{
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .brandWrap{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      user-select:none;
+      min-width: 260px;
+    }
+    .brandLogoImg{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      object-fit:cover;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      flex: 0 0 auto;
+    }
+
+    .brandText .brandTitle{
+      font-weight:800;
+      letter-spacing:.06em;
+      font-size:13px;
+      line-height: 1.1;
+    }
+    .brandText .brandSub{
+      font-size:11px;
+      letter-spacing:.22em;
+      color: rgba(214,178,94,.95);
+      margin-top:3px;
+      text-transform:uppercase;
+      line-height: 1.2;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+    .nav a{
+      text-decoration:none;
+      color: rgba(238,242,255,.86);
+      font-size:13px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      position:relative;
+      padding: 6px 0;
+    }
+    .nav a::after{
+      content:"";
+      position:absolute;
+      left:0; bottom:-7px;
+      width:0%;
+      height:2px;
+      background: var(--gold);
+      transition: width 180ms ease;
+      opacity:.85;
+    }
+    .nav a:hover{ color: var(--gold); }
+    .nav a:hover::after{ width:100%; }
+
+    .navRight{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content: flex-end;
+      min-width: 260px;
+    }
+    .pill{
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(214,178,94,.35);
+      color: rgba(214,178,94,.95);
+      font-weight:800;
+      letter-spacing:.18em;
+      font-size:11px;
+      text-transform:uppercase;
+      cursor:default;
+      user-select:none;
+      white-space: nowrap;
+    }
+    .iconBtn{
+      width:40px; height:40px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform 150ms ease, border-color 150ms ease;
+      display:grid;
+      place-items:center;
+    }
+    .iconBtn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(214,178,94,.55);
+      color: var(--gold);
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      border-radius: 22px;
+      overflow:hidden;
+      margin-top: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      box-shadow: var(--shadow);
+    }
+
+    .heroBg{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(6,10,20,.18), rgba(6,10,20,.60)),
+        url("assets/hero.jpg") center/cover no-repeat;
+      transform: scale(1.03);
+      filter: saturate(1.02) contrast(1.03);
+      z-index:-3;
+    }
+
+    .heroGlow{
+      position:absolute; inset:-40%;
+      background:
+        radial-gradient(circle at 60% 35%, rgba(214,178,94,.16), transparent 55%),
+        radial-gradient(circle at 25% 60%, rgba(90,135,255,.12), transparent 55%);
+      animation: glowMove 10s ease-in-out infinite alternate;
+      z-index:-2;
+      pointer-events:none;
+    }
+    @keyframes glowMove{
+      from{transform:translate(-2%,-1%)}
+      to{transform:translate(2%,1%)}
+    }
+
+    .heroParallax{
+      position:absolute; inset:-30%;
+      background:
+        radial-gradient(circle at 30% 50%, rgba(255,255,255,.05), transparent 45%),
+        radial-gradient(circle at 80% 60%, rgba(214,178,94,.08), transparent 45%);
+      mix-blend-mode: screen;
+      opacity:.75;
+      z-index:-1;
+      transform: translate3d(0,0,0);
+      pointer-events:none;
+    }
+
+    .heroInner{ padding: 24px; }
+
+    .heroKickerRow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color: rgba(238,242,255,.80);
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+    .dot{
+      width:10px; height:10px;
+      border-radius:50%;
+      background: #19c37d;
+      box-shadow: 0 0 0 3px rgba(25,195,125,.18);
+    }
+
+    .heroGlass{
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 22px 22px;
+
+      background: rgba(6, 10, 20, 0.28);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 18px;
+
+      box-shadow: var(--shadow2);
+      position: relative;
+    }
+
+    .heroGlass::after{
+      content:"";
+      position:absolute;
+      inset: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      pointer-events:none;
+    }
+
+    .glassKicker{
+      font-size: 10px;
+      letter-spacing: .30em;
+      text-transform: uppercase;
+      color: rgba(238,242,255,.80);
+      margin-bottom: 10px;
+    }
+    .glassTitle{
+      font-family: "Playfair Display", serif;
+      font-size: clamp(22px, 3.1vw, 40px);
+      font-weight: 700;
+      letter-spacing: .01em;
+      line-height: 1.12;
+      margin: 0 0 10px;
+      text-shadow: 0 10px 28px rgba(0,0,0,.45);
+    }
+    .glassSub{
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: rgba(214,178,94,.95);
+      margin-bottom: 10px;
+    }
+    .glassQuote{
+      font-style: italic;
+      color: rgba(238,242,255,.86);
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+    .glassTagline{
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(238,242,255,.70);
+    }
+
+    /* Sections */
+    section{ scroll-margin-top: 86px; }
+    .section{ padding: 52px 0; }
+    .section.alt{
+      background: rgba(255,255,255,.02);
+      border-top:1px solid rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .sectionHead h2{
+      margin:0 0 6px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size: 18px;
+    }
+    .sectionHead p{ margin:0; color: var(--muted); }
+
+    /* Alumni carousel */
+    .carousel{
+      display:grid;
+      grid-template-columns: 44px 1fr 44px;
+      gap: 10px;
+      align-items:center;
+      margin-top: 16px;
+    }
+    .carBtn{
+      width:44px; height:44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(10,15,26,.45);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform 150ms ease, border-color 150ms ease;
+    }
+    .carBtn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(214,178,94,.55);
+      color: var(--gold);
+    }
+    .carViewport{
+      overflow:hidden;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+    }
+    .carTrack{
+      display:flex;
+      gap:14px;
+      padding:14px;
+      transition: transform 420ms ease;
+      will-change: transform;
+    }
+    .card{
+      width: 230px;
+      flex: 0 0 auto;
+      border-radius: 14px;
+      overflow:hidden;
+      background: rgba(10,15,26,.35);
+      border:1px solid rgba(255,255,255,.10);
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+    .card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(214,178,94,.40);
+    }
+    .card img{
+      width:100%;
+      height: 135px;
+      object-fit: cover;
+      display:block;
+      background: rgba(255,255,255,.04);
+      cursor: zoom-in;
+    }
+    .cardBody{ padding: 10px 12px 12px; }
+    .cardName{ font-weight: 900; letter-spacing:.04em; }
+    .cardMeta{ color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+    /* Floating arrows */
+    .navArrows{
+      position: fixed;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 120;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .arrowBtn{
+      width:48px; height:48px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(10,15,26,.55);
+      color: var(--text);
+      cursor:pointer;
+      box-shadow: 0 12px 35px rgba(0,0,0,.28);
+      transition: transform 150ms ease, border-color 150ms ease;
+    }
+    .arrowBtn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(214,178,94,.55);
+      color: var(--gold);
+    }
+
+    /* CHAT */
+    .chatFab{
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 130;
+    }
+    .chatOpenBtn{
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(8,14,28,.60);
+      color: var(--text);
+      border-radius: 18px;
+      padding: 12px 14px;
+      cursor:pointer;
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(12px);
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+    .chatOpenBtn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(214,178,94,.55);
+      color: var(--gold);
+    }
+    .chatbox{
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 135;
+      width: 340px;
+      max-width: calc(100vw - 36px);
+      background: rgba(8,14,28,.72);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 18px;
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      display:none;
+      backdrop-filter: blur(12px);
+    }
+    .chatHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      gap:10px;
+    }
+    .chatTitle{
+      font-weight: 900;
+      letter-spacing:.10em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .chatBody{
+      padding: 10px 12px;
+      height: 260px;
+      overflow:auto;
+    }
+    .msg{ margin: 8px 0; display:flex; }
+    .msg.you{ justify-content:flex-end; }
+    .bubble{
+      max-width: 85%;
+      padding: 10px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: rgba(238,242,255,.92);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .msg.you .bubble{
+      background: rgba(214,178,94,.12);
+      border-color: rgba(214,178,94,.30);
+    }
+    .chatFoot{
+      display:flex;
+      gap:10px;
+      padding: 10px 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .chatFoot input{
+      flex:1;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.12);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px 12px;
+      outline:none;
+    }
+    .chatFoot button{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px 12px;
+      cursor:pointer;
+      transition: transform 140ms ease, border-color 140ms ease;
+    }
+    .chatFoot button:hover{
+      transform: translateY(-1px);
+      border-color: rgba(214,178,94,.55);
+      color: var(--gold);
+    }
+
+    /* FOOTER */
+    .footer{
+      padding: 22px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      text-align:center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ✅ MUSIC PLAYER: SLIM HORIZONTAL DOCK */
+    .musicDock{
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      z-index: 125;
+
+      width: min(920px, calc(100vw - 28px));
+      border-radius: 18px;
+
+      background: rgba(8, 14, 28, 0.42);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 18px 55px rgba(0,0,0,.30);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      overflow: hidden;
+    }
+    .dockInner{
+      display: grid;
+      grid-template-columns: 1fr auto minmax(180px, 260px) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 12px;
+    }
+    .dockLeft{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .dockBadge{
+      font-weight: 900;
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+
+      color: rgba(6,10,20,.95);
+      background: rgba(214,178,94,.95);
+      border: 1px solid rgba(214,178,94,.55);
+      border-radius: 999px;
+      padding: 6px 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.20);
+      flex: 0 0 auto;
+    }
+    .dockText{ min-width: 0; }
+    .dockTitle{
+      font-weight: 900;
+      letter-spacing: .04em;
+      font-size: 13px;
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dockMeta{
+      font-size: 12px;
+      color: rgba(238,242,255,.75);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+
+    .dockControls{ display:flex; gap:8px; align-items:center; }
+    .dockBtn{
+      width: 42px;
+      height: 38px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: rgba(238,242,255,.92);
+      cursor: pointer;
+      transition: transform 140ms ease, border-color 140ms ease, color 140ms ease;
+    }
+    .dockBtn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(214,178,94,.55);
+      color: rgba(214,178,94,.95);
+    }
+
+    .dockVol{ display:flex; align-items:center; gap:10px; }
+    .dockVolLabel{
+      font-size: 11px;
+      letter-spacing: .20em;
+      text-transform: uppercase;
+      color: rgba(238,242,255,.70);
+    }
+    .dockVol input[type="range"]{
+      width: 100%;
+      accent-color: rgba(214,178,94,.95);
+    }
+
+    .dockToggle{
+      width: 42px;
+      height: 38px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: rgba(238,242,255,.92);
+      cursor: pointer;
+      transition: transform 140ms ease, border-color 140ms ease, color 140ms ease;
+    }
+    .dockToggle:hover{
+      transform: translateY(-1px);
+      border-color: rgba(214,178,94,.55);
+      color: rgba(214,178,94,.95);
+    }
+
+    .musicDock.collapsed{ width: min(360px, calc(100vw - 28px)); }
+    .musicDock.collapsed .dockVol,
+    .musicDock.collapsed #stopBtn{ display:none; }
+    .musicDock.collapsed .dockInner{ grid-template-columns: 1fr auto auto; }
+
+    /* ✅ LIGHTBOX MODAL */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      background: rgba(5,10,20,.85);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 18px;
+    }
+    .lightboxInner{
+      position: relative;
+      max-width: 90vw;
+      max-height: 85vh;
+      background: rgba(10,15,30,.85);
+      border-radius: 18px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 30px 80px rgba(0,0,0,.6);
+      animation: zoomIn .25s ease;
+    }
+    .lightboxInner img{
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto;
+    }
+    .lightboxCaption{
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: rgba(238,242,255,.85);
+    }
+    .lightboxClose{
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .lightboxClose:hover{
+      background: rgba(214,178,94,.25);
+      border-color: rgba(214,178,94,.55);
+    }
+    @keyframes zoomIn{
+      from{ transform: scale(.92); opacity:0 }
+      to{ transform: scale(1); opacity:1 }
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .nav{ display:none; }
+      .pill{ display:none; }
+      .brandWrap, .navRight{ min-width: unset; }
+    }
+    @media (max-width: 560px){
+      .navArrows{ display:none; }
+      .heroInner{ padding: 16px; }
+      .card{ width: 200px; }
+
+      .dockInner{ grid-template-columns: 1fr auto auto; }
+      .dockVol{ display:none; }
+      .musicDock{ border-radius: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Section arrows -->
+  <div class="navArrows">
+    <button class="arrowBtn" id="secUp">▲</button>
+    <button class="arrowBtn" id="secDown">▼</button>
+  </div>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brandWrap">
+        <img class="brandLogoImg" src="assets/logo.png" alt="ASCB Official Logo">
+        <div class="brandText">
+          <div class="brandTitle">ASCB Batch 2002</div>
+          <div class="brandSub">ANDRES SORIANO COLLEGES OF BISLIG</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#section-about">About</a>
+        <a href="#section-events">Events</a>
+        <a href="#section-sections">Sections</a>
+        <a href="#section-contact">Contact</a>
+      </nav>
+
+      <div class="navRight">
+        <div class="pill">WELCOME 2026</div>
+        <button class="iconBtn" id="searchBtn" title="Search">🔍</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="section-about">
+      <div class="heroBg"></div>
+      <div class="heroGlow"></div>
+      <div class="heroParallax" id="heroParallax"></div>
+
+      <div class="heroInner">
+        <div class="heroKickerRow">
+          <span class="dot"></span>
+          <span>ASCB HS ALUMNI BATCH 2002</span>
+        </div>
+
+        <div class="heroGlass">
+          <div class="glassKicker">OFFICIAL BATCH WEBPAGE</div>
+          <div class="glassTitle">Andres Soriano Colleges of Bislig</div>
+          <div class="glassSub">HIGH SCHOOL BATCH 2002</div>
+          <div class="glassQuote">“Soriano Colleges, Alma mater Dear.”</div>
+          <div class="glassTagline">RECONNECT · REMEMBER · CELEBRATE</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="section" id="section-events">
+      <div class="sectionHead">
+        <h2>Events</h2>
+        <p>Reunions and Milestones</p>
+      </div>
+
+      <div style="margin-top:16px; padding:18px; border-radius:18px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);">
+        • Reunion Night — 7:00 PM October 2026 | No fix date.<br>
+
+      </div>
+    </section>
+
+    <!-- DIRECTORY -->
+    <section class="section alt" id="section-sections">
+      <div class="sectionHead">
+        <h2>SMALL GALLERY SECTION</h2>
+        <p>Click a photo to open a lightbox.</p>
+      </div>
+
+      <div class="carousel">
+        <button class="carBtn" id="prevSlide">‹</button>
+        <div class="carViewport" id="carViewport">
+          <div class="carTrack" id="carTrack">
+            <article class="card">
+              <img src="assets/alumni1.jpg" alt="Alumni 1">
+              <div class="cardBody">
+                <div class="cardName">Grand Alumni Homecoming</div>
+                <div class="cardMeta">December 27, 2025</div>
+              </div>
+            </article>
+            <article class="card">
+              <img src="assets/alumni2.jpg" alt="Alumni 2">
+              <div class="cardBody">
+                <div class="cardName">Mhi-mhi and Bhambi</div>
+                <div class="cardMeta">Kigjag Jammerz</div>
+
+              </div>
+            </article>
+            <article class="card">
+              <img src="assets/alumni3.jpg" alt="Alumni 3">
+              <div class="cardBody">
+                <div class="cardName">Batch bonding 2026</div>
+                <div class="cardMeta">happening Jan. 03, 2026</div>
+
+              </div>
+            </article>
+            <article class="card">
+              <img src="assets/alumni4.jpg" alt="Alumni 4">
+              <div class="cardBody">
+                <div class="cardName">New Year Jan. 02, 2026</div>
+                <div class="cardMeta">Sponsored by - Doomciy</div>
+              </div>
+            </article>
+            <article class="card">
+              <img src="assets/alumni5.jpg" alt="Alumni 5">
+              <div class="cardBody">
+                <div class="cardName">After Party Group Pics</div>
+                <div class="cardMeta">Before back to reality</div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <button class="carBtn" id="nextSlide">›</button>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="section-contact">
+      <div class="sectionHead">
+        <h2>Contact</h2>
+        <p>For more updated events & info contact below</p>
+      </div>
+
+      <div style="margin-top:16px; padding:18px; border-radius:18px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);">
+        Email: admin@sulapradio.com<br>
+        Facebook: fb.com/ascbatch2002<br>
+        Mobile: +63 9489212553
+      </div>
+    </section>
+  </main>
+
+  <div class="footer">© <span id="year"></span> ASCB Batch 2002 Alumni</div>
+
+  <!-- CHAT -->
+  <div class="chatFab" id="chatFab">
+    <button class="chatOpenBtn" id="openChat">💬 Chat</button>
+  </div>
+
+  <div class="chatbox" id="chatbox">
+    <div class="chatHead">
+      <div class="chatTitle">ALUMNI CHAT</div>
+      <div style="display:flex; gap:8px;">
+        <button class="iconBtn" id="minChat" title="Minimize" style="width:34px;height:34px;border-radius:12px;">—</button>
+        <button class="iconBtn" id="hideChat" title="Hide" style="width:34px;height:34px;border-radius:12px;">✕</button>
+      </div>
+    </div>
+
+    <div class="chatBody" id="chatBody">
+      <div class="msg bot"><div class="bubble">Hi! Click an alumni photo to open the lightbox 📸</div></div>
+    </div>
+
+    <div class="chatFoot">
+      <input id="chatInput" type="text" placeholder="Type a message...">
+      <button id="sendMsg">Send</button>
+    </div>
+  </div>
+
+  <!-- MUSIC PLAYER -->
+  <div class="musicDock collapsed" id="musicWidget">
+    <div class="dockInner">
+      <div class="dockLeft">
+        <div class="dockBadge" title="Live">LIVE</div>
+        <div class="dockText">
+          <div class="dockTitle" id="trackName">Sulap Radio</div>
+          <div class="dockMeta" id="trackMeta">AzuraCast Live Stream</div>
+        </div>
+      </div>
+
+      <div class="dockControls">
+        <button class="dockBtn" id="playPause" title="Play/Pause">▶</button>
+        <button class="dockBtn" id="stopBtn" title="Stop">⏹</button>
+      </div>
+
+      <div class="dockVol">
+        <span class="dockVolLabel">VOL</span>
+        <input id="volume" type="range" min="0" max="1" step="0.01" value="0.85">
+      </div>
+
+      <button class="dockToggle" id="musicCollapse" title="Expand/Collapse">▭</button>
+    </div>
+
+    <audio id="audio" crossorigin="anonymous"></audio>
+  </div>
+
+  <!-- ✅ LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightboxInner" role="dialog" aria-modal="true">
+      <button class="lightboxClose" id="lightboxClose" aria-label="Close">✕</button>
+      <img id="lightboxImg" src="" alt="">
+      <div class="lightboxCaption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    // CONFIG: Put your AzuraCast stream URL here
+    const AZURACAST_STREAM_URL = "https://a11.asurahosting.com:8400/radio.mp3";
+    const qs  = (s)=>document.querySelector(s);
+
+    qs("#year").textContent = String(new Date().getFullYear());
+
+    // Smooth scroll + small jQuery animation
+    $(function(){
+      $("a[href^='#']").on("click", function(e){
+        const id = $(this).attr("href");
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        $("html, body").stop().animate({ scrollTop: $(el).offset().top - 78 }, 420);
+      });
+      $("#searchBtn").on("click", function(){
+        $(this).animate({ opacity: 0.4 }, 80).animate({ opacity: 1 }, 140);
+      });
+    });
+
+    // Floating section arrow navigation
+    const sections = ["#section-about","#section-events","#section-sections","#section-contact"]
+      .map(s=>document.querySelector(s)).filter(Boolean);
+    let curSec = 0;
+
+    function syncSection(){
+      const y = window.scrollY + 130;
+      let best = 0, bestDist = Infinity;
+      sections.forEach((sec,i)=>{
+        const d = Math.abs(sec.offsetTop - y);
+        if (d < bestDist){ bestDist = d; best = i; }
+      });
+      curSec = best;
+    }
+    window.addEventListener("scroll", syncSection, {passive:true});
+    syncSection();
+
+    qs("#secUp").addEventListener("click", ()=>{
+      syncSection();
+      const t = Math.max(0, curSec-1);
+      sections[t].scrollIntoView({behavior:"smooth", block:"start"});
+    });
+    qs("#secDown").addEventListener("click", ()=>{
+      syncSection();
+      const t = Math.min(sections.length-1, curSec+1);
+      sections[t].scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    // Hero parallax drift
+    const par = qs("#heroParallax");
+    let mx=0,my=0,px=0,py=0,t=0;
+    window.addEventListener("mousemove",(e)=>{
+      const w=innerWidth||1, h=innerHeight||1;
+      mx=(e.clientX/w - 0.5)*2;
+      my=(e.clientY/h - 0.5)*2;
+    },{passive:true});
+
+    function anim(){
+      t += 0.01;
+      px += (mx - px)*0.06;
+      py += (my - py)*0.06;
+
+      const dx = Math.sin(t)*0.25;
+      const dy = Math.cos(t*0.9)*0.20;
+
+      const x = (px+dx)*14;
+      const y = (py+dy)*10;
+
+      if (par) par.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      requestAnimationFrame(anim);
+    }
+    anim();
+
+    // Alumni carousel autoplay
+    const carTrack = qs("#carTrack");
+    const carViewport = qs("#carViewport");
+    let carIndex = 0;
+    let carTimer = null;
+
+    function carStep(){
+      const card = carTrack?.querySelector(".card");
+      if (!card) return 0;
+      const gap = parseFloat(getComputedStyle(carTrack).gap || "0");
+      return card.getBoundingClientRect().width + gap;
+    }
+    function carMax(){
+      const step = carStep();
+      if (!step || !carViewport) return 0;
+      const total = carTrack.children.length;
+      const visible = Math.max(1, Math.floor(carViewport.clientWidth / step));
+      return Math.max(0, total - visible);
+    }
+    function carRender(){
+      const step = carStep();
+      const max = carMax();
+      if (carIndex<0) carIndex=max;
+      if (carIndex>max) carIndex=0;
+      carTrack.style.transform = `translate3d(${-(carIndex*step)}px,0,0)`;
+    }
+    function carStart(){
+      carStop();
+      carTimer = setInterval(()=>{ carIndex++; carRender(); }, 2600);
+    }
+    function carStop(){
+      if (carTimer) clearInterval(carTimer);
+      carTimer = null;
+    }
+
+    qs("#nextSlide").addEventListener("click", ()=>{ carStop(); carIndex++; carRender(); carStart(); });
+    qs("#prevSlide").addEventListener("click", ()=>{ carStop(); carIndex--; carRender(); carStart(); });
+    carViewport.addEventListener("mouseenter", carStop);
+    carViewport.addEventListener("mouseleave", carStart);
+    window.addEventListener("resize", ()=>{ if (carIndex>carMax()) carIndex=carMax(); carRender(); });
+    carRender(); carStart();
+
+    // AzuraCast player
+    const audio = qs("#audio");
+    const playPause = qs("#playPause");
+    const stopBtn = qs("#stopBtn");
+    const volume = qs("#volume");
+    const trackMeta = qs("#trackMeta");
+    const musicWidget = qs("#musicWidget");
+    const musicCollapse = qs("#musicCollapse");
+
+    audio.src = AZURACAST_STREAM_URL;
+    audio.volume = Number(volume.value);
+    let playing = false;
+
+    playPause.addEventListener("click", async () => {
+      try{
+        if (!playing){
+          await audio.play();
+          playing = true;
+          playPause.textContent = "⏸";
+          trackMeta.textContent = "Playing LIVE stream";
+        } else {
+          audio.pause();
+          playing = false;
+          playPause.textContent = "▶";
+          trackMeta.textContent = "Paused";
+        }
+      } catch (e){
+        trackMeta.textContent = "Stream failed: check URL / HTTPS / CORS";
+      }
+    });
+
+    stopBtn.addEventListener("click", () => {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.load();
+      playing = false;
+      playPause.textContent = "▶";
+      trackMeta.textContent = "Stopped";
+    });
+
+    volume.addEventListener("input", () => {
+      audio.volume = Number(volume.value);
+    });
+
+    musicCollapse.addEventListener("click", () => {
+      musicWidget.classList.toggle("collapsed");
+    });
+
+    // Chatbox
+    const openChat = qs("#openChat");
+    const hideChat = qs("#hideChat");
+    const minChat = qs("#minChat");
+    const chatBody = qs("#chatBody");
+    const chatInput = qs("#chatInput");
+    const sendMsg = qs("#sendMsg");
+    let minimized = false;
+
+    function addMsg(text, who="you"){
+      const row = document.createElement("div");
+      row.className = "msg " + who;
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = text;
+      row.appendChild(bubble);
+      chatBody.appendChild(row);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+    function botReply(v){
+      const t = v.toLowerCase();
+      if (t.includes("hi") || t.includes("hello")) return "Hello! Kumusta? How can I help you?";
+      if (t.includes("event")) return "Events section is ready—tell me your reunion schedule and I’ll format it.";
+      if (t.includes("directory")) return "We can add search + filtering per section, city, or work.";
+      return "Noted! Want this chat connected to Messenger/Telegram next?";
+    }
+
+    let hideTimer = null;
+    function clearAutoHide(){ if (hideTimer) clearTimeout(hideTimer); hideTimer = null; }
+    function scheduleAutoHide(){
+      clearAutoHide();
+      hideTimer = setTimeout(()=>{
+        if ($("#chatbox").is(":visible")){
+          $("#chatbox").fadeOut(140);
+          $("#chatFab").fadeIn(180);
+        }
+      }, 25000);
+    }
+
+    openChat.addEventListener("click", () => {
+      $("#chatbox").stop(true,true).fadeIn(180);
+      $("#chatFab").stop(true,true).fadeOut(120);
+      scheduleAutoHide();
+    });
+    hideChat.addEventListener("click", () => {
+      $("#chatbox").stop(true,true).fadeOut(140);
+      $("#chatFab").stop(true,true).fadeIn(180);
+      clearAutoHide();
+    });
+    minChat.addEventListener("click", () => {
+      minimized = !minimized;
+      if (minimized){
+        $("#chatbox .chatBody, #chatbox .chatFoot").slideUp(160);
+      } else {
+        $("#chatbox .chatBody, #chatbox .chatFoot").slideDown(160);
+      }
+    });
+
+    function send(){
+      const v = chatInput.value.trim();
+      if (!v) return;
+      addMsg(v, "you");
+      chatInput.value = "";
+      scheduleAutoHide();
+      setTimeout(()=>addMsg(botReply(v), "bot"), 350);
+    }
+    sendMsg.addEventListener("click", send);
+    chatInput.addEventListener("keydown", (e)=>{ if (e.key === "Enter") send(); });
+
+    // ✅ LIGHTBOX logic (click any alumni photo)
+    const lightbox = qs("#lightbox");
+    const lightboxImg = qs("#lightboxImg");
+    const lightboxCaption = qs("#lightboxCaption");
+    const lightboxClose = qs("#lightboxClose");
+
+    function openLightbox(imgEl){
+      lightboxImg.src = imgEl.src;
+      const name = imgEl.closest(".card")?.querySelector(".cardName")?.textContent || "";
+      lightboxCaption.textContent = name;
+      lightbox.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+    function closeLightbox(){
+      lightbox.style.display = "none";
+      lightboxImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll(".card img").forEach(img=>{
+      img.addEventListener("click", ()=>openLightbox(img));
+    });
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (e)=>{
+      if (e.target === lightbox) closeLightbox();
+    });
+    window.addEventListener("keydown", (e)=>{
+      if (e.key === "Escape" && lightbox.style.display === "flex") closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
