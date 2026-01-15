@@ -622,6 +622,23 @@
       .musicDock{ border-radius: 16px; }
     }
   </style>
+  /* ✅ MOBILE FIX: prevent Chat + Radio overlap */
+@media (max-width: 560px){
+  :root{
+    --dockH: 74px; /* approx height of the musicDock on mobile */
+  }
+
+  /* lift chat button above the music dock */
+  .chatFab{
+    bottom: calc(18px + var(--dockH)) !important;
+  }
+
+  /* if you still use the expanded chatbox sometimes, lift it too */
+  .chatbox{
+    bottom: calc(18px + var(--dockH)) !important;
+  }
+}
+
 </head>
 
 <body>
