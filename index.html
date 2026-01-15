@@ -396,14 +396,16 @@
       color: var(--gold);
     }
 
-    /* CHAT BUTTON (opens Messenger) */
+    /* ✅ CHAT LINK (GUARANTEED CLICK) */
     .chatFab{
       position: fixed;
       left: 18px;
       bottom: 18px;
-      z-index: 9999; /* ensure clickable */
+      z-index: 9999;
     }
     .chatOpenBtn{
+      display:inline-block;
+      text-decoration:none;
       border: 1px solid rgba(255,255,255,.18);
       background: rgba(8,14,28,.60);
       color: var(--text);
@@ -436,14 +438,18 @@
       left: 50%;
       bottom: 14px;
       transform: translateX(-50%);
-      z-index: 5000; /* below chat button */
+      z-index: 5000;
+
       width: min(920px, calc(100vw - 28px));
       border-radius: 18px;
+
       background: rgba(8, 14, 28, 0.42);
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: 0 18px 55px rgba(0,0,0,.30);
+
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
+
       overflow: hidden;
     }
     .dockInner{
@@ -464,6 +470,7 @@
       font-size: 10px;
       letter-spacing: .22em;
       text-transform: uppercase;
+
       color: rgba(6,10,20,.95);
       background: rgba(214,178,94,.95);
       border: 1px solid rgba(214,178,94,.55);
@@ -618,30 +625,6 @@
 </head>
 
 <body>
-  <!-- ✅ Facebook Messenger Customer Chat Plugin -->
-  <div id="fb-root"></div>
-  <script>
-    // Loads Facebook SDK for the Customer Chat plugin
-    window.fbAsyncInit = function() {
-      FB.init({ xfbml: true, version: 'v19.0' });
-    };
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
-
-  <div class="fb-customerchat"
-    attribution="install_email"
-    page_id="61568508901711"
-    theme_color="#d6b25e"
-    logged_in_greeting="Hi Batchmate 👋 How can we help you?"
-    logged_out_greeting="Hi! Please log in to Messenger to chat.">
-  </div>
-
   <!-- Section arrows -->
   <div class="navArrows">
     <button class="arrowBtn" id="secUp">▲</button>
@@ -776,7 +759,7 @@
 
       <div style="margin-top:16px; padding:18px; border-radius:18px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.10);">
         Email: admin@sulapradio.com<br>
-        Facebook: fb.me/ascbatch2002
+        Facebook: fb.com/ascbatch2002<br>
         Mobile: +63 9489212553
       </div>
     </section>
@@ -784,9 +767,14 @@
 
   <div class="footer">© <span id="year"></span> ASCB Batch 2002 Alumni</div>
 
-  <!-- ✅ CHAT BUTTON (opens Messenger) -->
+  <!-- ✅ CHAT (GUARANTEED CLICK, NO JS POPUP) -->
   <div class="chatFab" id="chatFab">
-    <button class="chatOpenBtn" id="openChat">💬 Chat</button>
+    <a class="chatOpenBtn"
+       href="https://m.me/61568508901711"
+       target="_blank"
+       rel="noopener noreferrer">
+      💬 Chat
+    </a>
   </div>
 
   <!-- MUSIC PLAYER -->
@@ -828,9 +816,8 @@
   <script>
     // CONFIG: Put your AzuraCast stream URL here
     const AZURACAST_STREAM_URL = "https://a11.asurahosting.com:8400/radio.mp3";
-    const PAGE_MESSENGER_LINK = "https://m.me/61568508901711";
-
     const qs  = (s)=>document.querySelector(s);
+
     qs("#year").textContent = String(new Date().getFullYear());
 
     // Smooth scroll + small jQuery animation
@@ -1020,33 +1007,6 @@
     window.addEventListener("keydown", (e)=>{
       if (e.key === "Escape" && lightbox.style.display === "flex") closeLightbox();
     });
-
-    // ✅ Messenger opener with guaranteed fallback
-    function openMessengerChat(){
-      // Always fallback works
-      const fallback = () => window.open(PAGE_MESSENGER_LINK, "_blank");
-
-      try {
-        if (window.FB && FB.CustomerChat && typeof FB.CustomerChat.show === "function") {
-          FB.CustomerChat.show(true);
-          // Some builds have open(), some don't — safe try:
-          if (typeof FB.CustomerChat.open === "function") FB.CustomerChat.open();
-          return;
-        }
-      } catch (e) {
-        // ignore and fallback
-      }
-      fallback();
-    }
-
-    // Bind chat button
-    const openChatBtn = qs("#openChat");
-    if (openChatBtn){
-      openChatBtn.addEventListener("click", (e)=>{
-        e.preventDefault();
-        openMessengerChat();
-      });
-    }
   </script>
 
 </body>
